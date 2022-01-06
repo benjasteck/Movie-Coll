@@ -12,6 +12,9 @@ import javafx.stage.Stage;
 
 public class Controller {
 
+    private CategoryModel categoryModel;
+    private MovieModel movieModel;
+
     @FXML
     private TableView categoryTable;
     @FXML
@@ -38,6 +41,11 @@ public class Controller {
     private Button btnRateMovie;
     @FXML
     private Button btnPlayMovie;
+
+    public Controller(){
+        categoryModel = new CategoryModel();
+        movieModel = new MovieModel();
+    }
 
     public void newCategory(ActionEvent actionEvent) {
     }

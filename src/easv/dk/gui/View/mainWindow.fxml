@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -21,7 +22,7 @@
       <Button fx:id="btnDeleteMovies" layoutX="613.0" layoutY="530.0" mnemonicParsing="false" onAction="#deleteMovies" text="Delete" />
       <Button fx:id="btnEditMovies" layoutX="566.0" layoutY="530.0" mnemonicParsing="false" onAction="#editMovies" text="Edit" />
       <Button fx:id="btnNewMovie" layoutX="509.0" layoutY="530.0" mnemonicParsing="false" onAction="#newMovie" text="New" />
-      <Button fx:id="btnPlayMovie" layoutX="28.0" layoutY="49.0" mnemonicParsing="false" onAction="#playMovie" prefHeight="71.0" prefWidth="73.0" rotate="90.0" style="-fx-background-radius: 100;" text="▲">
+      <Button fx:id="btnPlayMovie" layoutX="28.0" layoutY="49.0" mnemonicParsing="false" onAction="#playMovie" prefHeight="71.0" prefWidth="73.0" rotate="90.0" style="-fx-background-radius: 100;" text="▲" />
       <TableView layoutX="29.0" layoutY="183.0" prefHeight="340.0" prefWidth="200.0" />
       <TableView layoutX="501.0" layoutY="183.0" prefHeight="340.0" prefWidth="341.0" />
       <Button layoutX="29.0" layoutY="530.0" mnemonicParsing="false" text="New" />
@@ -70,5 +71,13 @@
             <Font size="14.0" />
          </font>
       </Button>
+      <Label layoutX="308.0" layoutY="37.0" text="ZebraMovie" textFill="#ff00ffe6">
+         <font>
+            <Font size="38.0" />
+         </font>
+         <effect>
+            <Glow level="1.0" />
+         </effect>
+      </Label>
    </children>
 </AnchorPane>
