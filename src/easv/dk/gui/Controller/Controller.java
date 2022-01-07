@@ -163,10 +163,30 @@ public class Controller {
         //show the new list of filtered songs
         movieTable.setItems(sortedData);
 
-        //there needs to be a referance in an initialize method for this to work
+        //there needs to be a reference in an initialize method for this to work
 
 
 
+    }
+
+    public void sorter(){
+        TableView<Movie> table = new TableView<>();
+        TableColumn<Movie, String> column1 = new TableColumn<>("title");
+                column1.setCellValueFactory(cellData -> cellData.getValue().NameProperty());
+        TableColumn<Movie, String> column2 = new TableColumn<>("imbdRating");
+                column2.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
+        TableColumn<Movie, String> column3 = new TableColumn<>("userRating");
+                column3.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
+        TableColumn<Movie, String> column4 = new TableColumn<>("lastView");
+               column4.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
+
+
+
+        ObservableList<Movie> data = FXCollections.observableArrayList();
+        SortedList<Movie> sortedData = new SortedList<>(data);
+
+// this ensures the sortedData is sorted according to the sort columns in the table:
+        sortedData.comparatorProperty().bind(table.comparatorProperty())
     }
 
 }
