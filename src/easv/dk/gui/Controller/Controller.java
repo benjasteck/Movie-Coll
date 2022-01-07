@@ -4,6 +4,10 @@ import easv.dk.be.Category;
 import easv.dk.be.Movie;
 import easv.dk.gui.Model.CategoryModel;
 import easv.dk.gui.Model.MovieModel;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -14,6 +18,8 @@ public class Controller {
 
     private CategoryModel categoryModel;
     private MovieModel movieModel;
+    @FXML private TextField searchBar;
+    private final ObservableList<Movie> dataList = FXCollections.observableArrayList();
 
     @FXML
     private TableView categoryTable;
@@ -117,6 +123,39 @@ public class Controller {
         categoryTable.getColumns().add(column2);
 
        // categoryTable.getItems().addAll(CategoryModel.getListCategory()); -> List in CategoryModel needs to be created first
+    }
+
+    public void filter() {
+
+
+
+        /*dataList.addAll((Movie) MovieModel.getAllMovies()); //<-- depending on what name the method gets
+        FilteredList<Movie> filteredData = new FilteredList<>(dataList, b -> true);
+
+        searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(song1 -> {
+                // If filter text is empty, display all song.
+
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                // Compare title and artist of every song with filter text.
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                //fill with values to look for in here
+
+
+            });
+        });
+
+        SortedList<Movie> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(movieTable.comparatorProperty());
+        //show the new list of filtered songs
+        movieTable.setItems(sortedData);
+
+
+    }*/
     }
 
 }
