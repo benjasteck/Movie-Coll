@@ -138,14 +138,16 @@ public class Controller {
                     return true;
                 }
 
-                // Compare title and artist of every song with filter text.
+                // Compare title, category and rating of every song with filter text.
                 String lowerCaseFilter = newValue.toLowerCase();
 
                 if (movie1.getTitle().toLowerCase().contains(lowerCaseFilter)) {
                     return true; // Filter title.
                 }
                 if (String.valueOf(movie1.getImdbRating()).contains(lowerCaseFilter)) {
-                    return true; // Filter ImdbRating.
+                    for (int n = movie1.getImdbRating(); n<=10 ; n++){
+                        return true; //filter minimum imdbRating
+                    }
                 }
                 if (movie1.getCategory().toLowerCase().contains(lowerCaseFilter)) {
                     return true; // Filter category.
