@@ -127,24 +127,33 @@ public class Controller {
 
     public void filter() {
 
-
-
-        /*dataList.addAll((Movie) MovieModel.getAllMovies()); //<-- depending on what name the method gets
+        dataList.addAll((Movie) MovieModel.getAllMovies()); //<-- depending on what name the method gets
         FilteredList<Movie> filteredData = new FilteredList<>(dataList, b -> true);
 
         searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(song1 -> {
+            filteredData.setPredicate(movie1 -> {
                 // If filter text is empty, display all song.
 
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
 
-                // Compare title and artist of every song with filter text.
+                // Compare title, category and rating of every song with filter text.
                 String lowerCaseFilter = newValue.toLowerCase();
 
-                //fill with values to look for in here
-
+                if (movie1.getTitle().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter title.
+                }
+                if (String.valueOf(movie1.getImdbRating()).contains(lowerCaseFilter)) {
+                    for (int n = movie1.getImdbRating(); n<=10 ; n++){
+                        return true; //filter minimum imdbRating
+                    }
+                }
+                if (movie1.getCategory().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter category.
+                }
+                else return false;
+                // if nothing found return false
 
             });
         });
@@ -154,8 +163,10 @@ public class Controller {
         //show the new list of filtered songs
         movieTable.setItems(sortedData);
 
+        //there needs to be a referance in an initialize method for this to work
 
-    }*/
+
+
     }
 
 }
