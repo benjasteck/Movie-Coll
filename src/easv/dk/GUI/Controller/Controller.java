@@ -55,6 +55,9 @@ public class Controller {
     private Button btnPlayMovie;
 
 
+    //  Alert alert = new Alert(Alert.AlertType.WARNING, "Remember to delete movies that have a personal rating under 6 and have not been opened in more than 2 years", ButtonType.OK);
+    //        alert.showAndWait();
+
     public Controller() {
         categoryModel = new CategoryModel();
         movieModel = new MovieModel();
