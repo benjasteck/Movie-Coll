@@ -87,8 +87,7 @@ public class Controller {
     public void openRateMovieWindow(ActionEvent actionEvent) {
     }
 
-    public void playMovie(ActionEvent actionEvent) {
-    }
+
 
     public void closeApplication(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Close the Application ?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
