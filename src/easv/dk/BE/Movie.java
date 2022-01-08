@@ -1,4 +1,4 @@
-package easv.dk.be;
+package easv.dk.BE;
 
 import java.util.Date;
 

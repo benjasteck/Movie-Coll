@@ -1,4 +1,4 @@
-package easv.dk.gui.Controller;
+package easv.dk.GUI.Controller;
 
 public class CategoryController {
 }

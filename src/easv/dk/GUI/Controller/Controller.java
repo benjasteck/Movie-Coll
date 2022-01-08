@@ -1,9 +1,9 @@
-package easv.dk.gui.Controller;
+package easv.dk.GUI.Controller;
 
-import easv.dk.be.Category;
-import easv.dk.be.Movie;
-import easv.dk.gui.Model.CategoryModel;
-import easv.dk.gui.Model.MovieModel;
+import easv.dk.BE.Category;
+import easv.dk.BE.Movie;
+import easv.dk.GUI.Model.CategoryModel;
+import easv.dk.GUI.Model.MovieModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -23,7 +23,8 @@ public class Controller {
 
     private CategoryModel categoryModel;
     private MovieModel movieModel;
-    @FXML private TextField searchBar;
+    @FXML
+    private TextField searchBar;
     private final ObservableList<Movie> dataList = FXCollections.observableArrayList();
 
     @FXML
@@ -54,8 +55,7 @@ public class Controller {
     private Button btnPlayMovie;
 
 
-
-    public Controller(){
+    public Controller() {
         categoryModel = new CategoryModel();
         movieModel = new MovieModel();
     }
@@ -88,7 +88,6 @@ public class Controller {
     }
 
 
-
     public void closeApplication(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Close the Application ?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
         alert.showAndWait();
@@ -100,7 +99,7 @@ public class Controller {
         }
     }
 
-    public void setUpMovieTable(){
+    public void setUpMovieTable() {
         TableColumn<Movie, String> column1 = new TableColumn<>("Name");
         column1.setCellValueFactory(new PropertyValueFactory<>("title"));
         TableColumn<Movie, String> column2 = new TableColumn<>("IMBD Rating");
@@ -115,11 +114,11 @@ public class Controller {
         movieTable.getColumns().add(column3);
         movieTable.getColumns().add(column4);
 
-      //  movieTable.getItems().addAll(MovieModel.getListModel()); -> list in MovieModel needs to be created that it works
+        //  movieTable.getItems().addAll(MovieModel.getListModel()); -> list in MovieModel needs to be created that it works
 
     }
 
-    public void setUpCategoryTable(){
+    public void setUpCategoryTable() {
         TableColumn<Category, String> column1 = new TableColumn<>("Name");
         column1.setCellValueFactory(new PropertyValueFactory<>("name"));
         TableColumn<Category, String> column2 = new TableColumn<>("Total Movies");
@@ -128,7 +127,7 @@ public class Controller {
         categoryTable.getColumns().add(column1);
         categoryTable.getColumns().add(column2);
 
-       // categoryTable.getItems().addAll(CategoryModel.getListCategory()); -> List in CategoryModel needs to be created first
+        // categoryTable.getItems().addAll(CategoryModel.getListCategory()); -> List in CategoryModel needs to be created first
     }
 
     public void filter() {
@@ -151,14 +150,13 @@ public class Controller {
                     return true; // Filter title.
                 }
                 if (String.valueOf(movie1.getImdbRating()).contains(lowerCaseFilter)) {
-                    for (int n = movie1.getImdbRating(); n<=10 ; n++){
+                    for (int n = movie1.getImdbRating(); n <= 10; n++) {
                         return true; //filter minimum imdbRating
                     }
                 }
                 if (movie1.getCategory().toLowerCase().contains(lowerCaseFilter)) {
                     return true; // Filter category.
-                }
-                else return false;
+                } else return false;
                 // if nothing found return false
 
             });
@@ -172,10 +170,10 @@ public class Controller {
         //there needs to be a reference in an initialize method for this to work
 
 
-
     }
 
-    public void sorter(){
+
+   public void sorter(){
         TableView<Movie> table = new TableView<>();
         TableColumn<Movie, String> column1 = new TableColumn<>("title");
                 column1.setCellValueFactory(cellData -> cellData.getValue().NameProperty());
@@ -192,7 +190,7 @@ public class Controller {
         SortedList<Movie> sortedData = new SortedList<>(data);
 
 // this ensures the sortedData is sorted according to the sort columns in the table:
-        sortedData.comparatorProperty().bind(table.comparatorProperty())
+        sortedData.comparatorProperty().bind(table.comparatorProperty());
     }
 
 

@@ -1,6 +1,6 @@
-package easv.dk.gui.Model;
+package easv.dk.GUI.Model;
 
-import easv.dk.be.Movie;
+import easv.dk.BE.Movie;
 import javafx.collections.ObservableList;
 
 public class MovieModel {
