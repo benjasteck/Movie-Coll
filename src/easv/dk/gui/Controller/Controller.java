@@ -10,9 +10,14 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class Controller {
 
@@ -47,6 +52,8 @@ public class Controller {
     private Button btnRateMovie;
     @FXML
     private Button btnPlayMovie;
+
+
 
     public Controller(){
         categoryModel = new CategoryModel();
@@ -189,4 +196,16 @@ public class Controller {
         sortedData.comparatorProperty().bind(table.comparatorProperty())
     }
 
+
+    public void openNewMovieWindow(ActionEvent actionEvent) throws IOException {
+
+        // when "new.." button under Movies table is clicked, the movieWindow.fxml window will open//
+               FXMLLoader loader = new FXMLLoader();
+               loader.setLocation(getClass().getClassLoader().getResource("./GUI/View/movieWindow.fxml"));
+               Parent root = loader.load();
+              Stage stage = new Stage();
+               stage.setTitle("New Movie");
+               stage.setScene(new Scene(root));
+               stage.show();
+    }
 }
