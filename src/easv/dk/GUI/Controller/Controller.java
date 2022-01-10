@@ -63,7 +63,27 @@ public class Controller {
         movieModel = new MovieModel();
     }
 
-    public void newCategory(ActionEvent actionEvent) {
+    public void newCategory(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getClassLoader().getResource("easv/dk/GUI/View/categoryWindow.fxml"));
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        stage.setTitle("New Category");
+        stage.centerOnScreen();
+        stage.show();
+    }
+    public void openNewMovieWindow(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getClassLoader().getResource("easv/dk/GUI/View/movieWindow.fxml"));
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        stage.setTitle("New Movie");
+        stage.centerOnScreen();
+        stage.show();
     }
 
     public void editCategory(ActionEvent actionEvent) {
@@ -84,8 +104,6 @@ public class Controller {
     public void editMovies(ActionEvent actionEvent) {
     }
 
-    public void newMovie(ActionEvent actionEvent) {
-    }
 
     public void openRateMovieWindow(ActionEvent actionEvent) {
     }
@@ -175,7 +193,7 @@ public class Controller {
 
     }
 
-
+/*
    public void sorter(){
         TableView<Movie> table = new TableView<>();
         TableColumn<Movie, String> column1 = new TableColumn<>("title");
@@ -195,17 +213,6 @@ public class Controller {
 // this ensures the sortedData is sorted according to the sort columns in the table:
         sortedData.comparatorProperty().bind(table.comparatorProperty());
     }
+*/
 
-
-    public void openNewMovieWindow(ActionEvent actionEvent) throws IOException {
-
-        // when "new.." button under Movies table is clicked, the movieWindow.fxml window will open//
-               FXMLLoader loader = new FXMLLoader();
-               loader.setLocation(getClass().getClassLoader().getResource("./GUI/View/movieWindow.fxml"));
-               Parent root = loader.load();
-              Stage stage = new Stage();
-               stage.setTitle("New Movie");
-               stage.setScene(new Scene(root));
-               stage.show();
-    }
 }
