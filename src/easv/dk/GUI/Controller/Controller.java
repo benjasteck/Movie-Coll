@@ -295,13 +295,13 @@ public class Controller {
         stage.centerOnScreen();
         stage.show();
     }
-}
 
 
-    /*public void addMovieToCategory(ActionEvent actionEvent) {
-         when button is clicked, the selected movie will be added to the current category
-        System.out.println(movieTable.getSelectionModel().getSelectedItem());
-        movieOnCategory.getItems().add(movieTable.getSelectionModel().getSelectedItem());
+
+    public void addMovieToCategory(ActionEvent actionEvent) { }
+        //when button is clicked, the selected movie will be added to the current category
+        //System.out.println(movieTable.getSelectionModel().getSelectedItem());
+       // movieOnCategory.getItems().add(movieTable.getSelectionModel().getSelectedItem());
 
 
     }
