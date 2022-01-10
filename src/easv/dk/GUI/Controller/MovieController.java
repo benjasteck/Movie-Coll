@@ -10,7 +10,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.stage.Window;
-
 import java.awt.*;
 import java.io.File;
 
@@ -19,9 +18,21 @@ public class MovieController {
 
     public Button btnChooseFile;
     @FXML
+    private Button btnCancelEditingMovie;
+    @FXML
     private ComboBox comboBoxCategory;
 
     public void cancelEditingMovie(ActionEvent actionEvent) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Discard changes ?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+        alert.showAndWait();
+
+
+        if (alert.getResult() == ButtonType.YES) {
+
+            Stage stage = (Stage) btnCancelEditingMovie.getScene().getWindow();
+             stage.close();
+        }
+
     }
 
     public void chooseCategory(ActionEvent actionEvent) {
@@ -45,21 +56,5 @@ public class MovieController {
         actionEvent.consume();
     }
 }
-  // @FXML
 
-    /*public void cancelEditingMovie(javafx.event.ActionEvent actionEvent) {
-
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Discard changes ?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
-        alert.showAndWait();
-
-
-        if (alert.getResult() == ButtonType.YES) {
-
-           //Stage stage = (Stage) btnCancelEditingMovie.getScene().getWindow();
-          // stage.close();
-        }
-    }
-
-
-*/
 

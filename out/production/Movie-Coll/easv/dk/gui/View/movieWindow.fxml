@@ -34,6 +34,7 @@
       </Label>
       <ComboBox fx:id="comboBoxCategory" layoutX="194.0" layoutY="201.0" onAction="#chooseCategory" prefWidth="150.0" />
       <Button layoutX="406.0" layoutY="336.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="51.0" text="Save" />
+      <Button fx:id="btnCancelEditingMovie" layoutX="472.0" layoutY="336.0" mnemonicParsing="false" onAction="#cancelEditingMovie" text="Cancel" />
       <Button layoutX="472.0" layoutY="336.0" mnemonicParsing="false" onAction="#cancelEditingMovie" text="Cancel" />
       <Label layoutX="47.0" layoutY="251.0" text="File:">
          <font>
