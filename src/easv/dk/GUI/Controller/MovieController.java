@@ -9,7 +9,7 @@ import javafx.scene.control.ComboBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
-import javafx.scene.control.Button;
+
 
 
 import javafx.stage.Window;
@@ -23,7 +23,7 @@ public class MovieController {
     private Button btnChooseFile;
     @FXML
 
-    public Button cancelEditingMovie;
+    public Button btnCancelEditingMovie;
 
     @FXML
     private ComboBox comboBoxCategory;
@@ -37,11 +37,10 @@ public class MovieController {
 
 
         if (alert.getResult() == ButtonType.YES) {
-           Stage stage = (Stage) cancelEditingMovie.getScene().getWindow();
+           Stage stage = (Stage) btnCancelEditingMovie.getScene().getWindow();
            stage.close();
 
-            stage = (Stage) cancelEditingMovie.getScene().getWindow();
-             stage.close();
+
         }
 
     }

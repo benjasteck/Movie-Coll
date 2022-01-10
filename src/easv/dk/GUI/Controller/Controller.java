@@ -61,6 +61,9 @@ public class Controller {
     private ComboBox sorterBox;
     public int pressed = 0;
 
+    // MediaPlayer mediaPlayer;
+    //    int currentMovie = -1;
+
 
     //  Alert alert = new Alert(Alert.AlertType.WARNING, "Remember to delete movies that have a personal rating under 6 and have not been opened in more than 2 years", ButtonType.OK);
     //        alert.showAndWait();
@@ -269,7 +272,7 @@ public class Controller {
         //if pressed thrice set value to 0
         if (pressed == 3)
             pressed = 0;
-        //if it anyhting but zero run the sort method if not clear the sort and return table to original.
+        //if it is anything but zero run the sort method if not clear the sort and return table to original.
         if (pressed != 0)
             sort();
         else {
@@ -279,17 +282,29 @@ public class Controller {
         return pressed;
 
 
-        public void openNewCategoryWindow (ActionEvent actionEvent) throws IOException {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getClassLoader().getResource("easv/dk/GUI/View/categoryWindow.fxml"));
-            Parent root = loader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.setResizable(false);
-            stage.setTitle("New Category");
-            stage.centerOnScreen();
-            stage.show();
-        }
+    }
+
+    public void openNewCategoryWindow(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getClassLoader().getResource("easv/dk/GUI/View/categoryWindow.fxml"));
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        stage.setTitle("New Category");
+        stage.centerOnScreen();
+        stage.show();
+    }
+}
+
+
+    /*public void addMovieToCategory(ActionEvent actionEvent) {
+         when button is clicked, the selected movie will be added to the current category
+        System.out.println(movieTable.getSelectionModel().getSelectedItem());
+        movieOnCategory.getItems().add(movieTable.getSelectionModel().getSelectedItem());
+
+
+    }
 
 /*
    public void sorter(){
@@ -313,6 +328,17 @@ public class Controller {
     }
 */
 
+    /* @FXML
+    private void playStopMovie (ActionEvent actionEvent) {
+        if (mediaPlayer != null && currentMovie == movieTable.getSelectionModel().getSelectedIndex()) {
+            if (mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING)
+                mediaPlayer.pause();
+            else if (mediaPlayer.getStatus() == MediaPlayer.Status.PAUSED || mediaPlayer.getStatus() == MediaPlayer.Status.STOPPED) {
+                mediaPlayer.play();
+            }
+        } else {
+            currentMovie = movieTable.getSelectionModel().getFocusedIndex();
+            play();
+        }
+   */
 
-    }
-}
