@@ -11,5 +11,13 @@ public class Manager implements LogicInterface{
     public List <Movie> getAllMovies() throws bllException{}
     public Movie createMovie (String title, int userRating, int imdbRating, String movieUrl, int id) throws bllException{}
     public Movie updateMovie (Movie movie, String title, int userRating, int imdbRating, String movieUrl, int id) throws bllException{}
-    public Movie deleteMovie ()*/
+    public Movie deleteMovie (){}
+    public Movie updateMovieRating(){}
+    public Movie updateMovieDate(){}
+    public Category createCategory (String name) {}
+    public Category updateCategory (String name){}
+    public Category deleteCategory (){}
+    public void addToCategory (){}
+    public void removeToCategory(){}
+    public void */
 }
