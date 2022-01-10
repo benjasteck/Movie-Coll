@@ -65,8 +65,7 @@ public class Controller {
     //        alert.showAndWait();
 
     public Controller() {
-        categoryModel = new CategoryModel();
-        movieModel = new MovieModel();
+
     }
 
 
