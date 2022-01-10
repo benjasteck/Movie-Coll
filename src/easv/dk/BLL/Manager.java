@@ -19,5 +19,8 @@ public class Manager implements LogicInterface{
     public Category deleteCategory (){}
     public void addToCategory (){}
     public void removeToCategory(){}
-    public void */
+    public void searchMovie (){}
+    public void updateMovieRating(){}
+    public void updateMovieDate(){}
+    */
 }
