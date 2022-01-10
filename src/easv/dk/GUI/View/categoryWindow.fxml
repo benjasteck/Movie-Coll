@@ -15,6 +15,6 @@
       </Label>
       <TextField layoutX="138.0" layoutY="113.0" promptText="Insert Category Name" />
       <Button layoutX="307.0" layoutY="254.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="52.0" text="Save" />
-      <Button fx:id="btnCancelEditingCategory" layoutX="382.0" layoutY="254.0" mnemonicParsing="false" onAction="#cancelEditingCategory" prefHeight="25.0" prefWidth="52.0" text="Cancel" />
+      <Button fx:id="cancelEditingCategory" layoutX="382.0" layoutY="254.0" mnemonicParsing="false" onAction="#cancelEditingCategory" prefHeight="25.0" prefWidth="52.0" text="Cancel" />
    </children>
 </AnchorPane>
