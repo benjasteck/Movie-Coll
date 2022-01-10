@@ -18,6 +18,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class Controller {
 
@@ -53,6 +55,8 @@ public class Controller {
     private Button btnRateMovie;
     @FXML
     private Button btnPlayMovie;
+    @FXML
+    private  ComboBox sorterBox;
 
 
     //  Alert alert = new Alert(Alert.AlertType.WARNING, "Remember to delete movies that have a personal rating under 6 and have not been opened in more than 2 years", ButtonType.OK);
@@ -62,6 +66,15 @@ public class Controller {
         categoryModel = new CategoryModel();
         movieModel = new MovieModel();
     }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        sorterBox.getItems().removeAll(sorterBox.getItems());
+        sorterBox.getItems().addAll("IMDB Score", "Title", "Category");
+        sorterBox.getSelectionModel().select("Title");
+    }
+
+
 
     public void newCategory(ActionEvent actionEvent) {
     }
@@ -122,9 +135,9 @@ public class Controller {
     }
 
     public void setUpCategoryTable() {
-        TableColumn<Category, String> column1 = new TableColumn<>("Name");
+        TableColumn<easv.dk.BE.Category, String> column1 = new TableColumn<>("Name");
         column1.setCellValueFactory(new PropertyValueFactory<>("name"));
-        TableColumn<Category, String> column2 = new TableColumn<>("Total Movies");
+        TableColumn<easv.dk.BE.Category, String> column2 = new TableColumn<>("Total Movies");
         column2.setCellValueFactory(new PropertyValueFactory<>("movieCount"));
 
         categoryTable.getColumns().add(column1);

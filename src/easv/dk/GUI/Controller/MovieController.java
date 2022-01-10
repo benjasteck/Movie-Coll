@@ -1,17 +1,19 @@
 package easv.dk.GUI.Controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
+import javafx.scene.control.Button;
 
 import java.awt.*;
 
 public class MovieController {
 
     @FXML
-    private Button btnCancelEditingMovie;
+    public Button cancelEditingMovie;
 
     @FXML
     private ComboBox comboBoxCategory;
@@ -19,8 +21,7 @@ public class MovieController {
 
 
    @FXML
-
-    public void cancelEditingMovie(javafx.event.ActionEvent actionEvent) {
+    public void cancelEditingMovie(ActionEvent actionEvent) {
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Discard changes ?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
         alert.showAndWait();
@@ -28,7 +29,7 @@ public class MovieController {
 
         if (alert.getResult() == ButtonType.YES) {
 
-           Stage stage = (Stage) btnCancelEditingMovie.getScene().getWindow();
+           Stage stage = (Stage) cancelEditingMovie.getScene().getWindow();
            stage.close();
         }
     }
