@@ -16,7 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-
+import javafx.scene.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -59,6 +59,7 @@ public class Controller {
     private Button btnAscendDescend;
     @FXML
     private  ComboBox sorterBox;
+    public int pressed = 0;
 
 
     //  Alert alert = new Alert(Alert.AlertType.WARNING, "Remember to delete movies that have a personal rating under 6 and have not been opened in more than 2 years", ButtonType.OK);
@@ -210,7 +211,6 @@ public class Controller {
 
     }
     public void sort(){
-        int press = getBtnAscendDescend().pressed;
         //constructors of the columns needed
         TableColumn movCol1 = (TableColumn) movieTable.getColumns().get(1);
         TableColumn movCol2 = (TableColumn) movieTable.getColumns().get(2);
@@ -219,13 +219,13 @@ public class Controller {
         //checks for selected colum
         if (sorterBox.getValue() == ("Title")){
             //checks for whether it should be ascending or descending
-            if (getBtnAscendDescend().pressed == 1){
-                setUpMovieTable().setSortType(TableColumn.SortType.ASCENDING);
+            if (pressed == 1){
+                movCol1.setSortType(TableColumn.SortType.ASCENDING);
                 movieTable.getSortOrder().add(movCol1);
                 movieTable.sort();
             }
-            if (getBtnAscendDescend().pressed == 2){
-                setUpMovieTable().setSortType(TableColumn.SortType.DESCENDING);
+            if (pressed == 2){
+                movCol1.setSortType(TableColumn.SortType.DESCENDING);
                 movieTable.getSortOrder().add(movCol1);
                 movieTable.sort();
             }
@@ -239,10 +239,10 @@ public class Controller {
 
     }
 
+
     public int getBtnAscendDescend(ActionEvent actionEvent) {
         //allows the program to know when to sort by ascending order, descending order and when not to sort.
         boolean ascending = false;
-        int pressed = 0;
         pressed++;
         //if button pressed once sort in ascending order
         if (pressed == 1)
