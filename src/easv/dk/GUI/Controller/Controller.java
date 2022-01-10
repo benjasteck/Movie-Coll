@@ -209,22 +209,59 @@ public class Controller {
 
 
     }
+    public void sort(){
+        int press = getBtnAscendDescend().pressed;
+        //constructors of the columns needed
+        TableColumn movCol1 = (TableColumn) movieTable.getColumns().get(1);
+        TableColumn movCol2 = (TableColumn) movieTable.getColumns().get(2);
+        TableColumn catCol1 = (TableColumn) categoryTable.getColumns().get(1);
 
-    public void getBtnAscendDescend(ActionEvent actionEvent) {
-    boolean ascending = false;
-    int pressed = 0;
-    pressed++;
+        //checks for selected colum
+        if (sorterBox.getValue() == ("Title")){
+            //checks for whether it should be ascending or descending
+            if (getBtnAscendDescend().pressed == 1){
+                setUpMovieTable().setSortType(TableColumn.SortType.ASCENDING);
+                movieTable.getSortOrder().add(movCol1);
+                movieTable.sort();
+            }
+            if (getBtnAscendDescend().pressed == 2){
+                setUpMovieTable().setSortType(TableColumn.SortType.DESCENDING);
+                movieTable.getSortOrder().add(movCol1);
+                movieTable.sort();
+            }
+        }
 
-    if (pressed == 1)
-        ascending = true;
 
-    if (pressed == 2)
-        ascending = false;
 
-    if (pressed == 3)
-        pressed = 0;
+
+
+
 
     }
+
+    public int getBtnAscendDescend(ActionEvent actionEvent) {
+        //allows the program to know when to sort by ascending order, descending order and when not to sort.
+        boolean ascending = false;
+        int pressed = 0;
+        pressed++;
+        //if button pressed once sort in ascending order
+        if (pressed == 1)
+            ascending = true;
+        //if twice sort in descending order
+        if (pressed == 2)
+            ascending = false;
+        //if pressed thrice set value to 0
+        if (pressed == 3)
+            pressed = 0;
+        //if it anyhting but zero run the sort method if not clear the sort and return table to original.
+        if (pressed != 0)
+            sort();
+        else {
+            movieTable.getSortOrder().clear();
+            categoryTable.getSortOrder().clear();
+        }
+        return pressed;
+
 
     public void openNewCategoryWindow(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
