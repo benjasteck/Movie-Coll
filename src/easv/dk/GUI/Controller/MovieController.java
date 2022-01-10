@@ -17,6 +17,19 @@ public class MovieController {
 
     public void cancelEditingMovie(ActionEvent actionEvent) {
     }
+
+    public void chooseCategory(ActionEvent actionEvent) {
+    }
+
+    @FXML
+    public void initialize() {
+
+        //adds different Categories to the comboBox that the user can choose from
+
+        comboBoxCategory.getItems().removeAll(comboBoxCategory.getItems());
+        comboBoxCategory.getItems().addAll("Action", "Comedy", "Drama", "Fantasy", "Horro", "Mystery", "Romance", "Thriller", "Western");
+        comboBoxCategory.getSelectionModel().select("Action");
+    }
 }
   // @FXML
 
@@ -33,14 +46,6 @@ public class MovieController {
         }
     }
 
-    // @Override
-    //    public void initialize(URL location, ResourceBundle resources) {
-    //        try {
-    //            comboBoxCategory.setItems(MovieModel.getAllCategories());
-    //
-    //        } catch (CategoryMovieDAOException e) {
-    //            e.printStackTrace();
-    //        }
-}
+
 */
 
