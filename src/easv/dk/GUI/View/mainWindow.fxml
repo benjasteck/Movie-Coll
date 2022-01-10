@@ -79,7 +79,7 @@
             <Image url="@../../../../../../../../Billeder/decasc.png" />
          </image>
       </ImageView>
-      <Button layoutX="29.0" layoutY="65.0" mnemonicParsing="false" onAction="#playStopMusic" prefHeight="68.0" prefWidth="68.0" rotate="90.0" style="-fx-background-radius: 100;" text="▲">
+      <Button layoutX="29.0" layoutY="65.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="68.0" rotate="90.0" style="-fx-background-radius: 100;" text="▲">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>

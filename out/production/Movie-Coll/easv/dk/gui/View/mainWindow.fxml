@@ -67,7 +67,7 @@
             <Glow level="1.0" />
          </effect>
       </Label>
-      <ComboBox fx:id="sorterBox" layoutX="633.0" layoutY="105.0" prefHeight="25.0" prefWidth="149.0" />
+      <ComboBox fx:id="sorterBox" layoutX="633.0" layoutY="105.0" prefHeight="26.0" prefWidth="158.0" />
       <Label layoutX="570.0" layoutY="104.0" text="Sort by:" textFill="WHITE">
          <font>
             <Font size="18.0" />
@@ -79,5 +79,10 @@
             <Image url="@../../../../../../../../Billeder/decasc.png" />
          </image>
       </ImageView>
+      <Button layoutX="29.0" layoutY="65.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="68.0" rotate="90.0" style="-fx-background-radius: 100;" text="▲">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
