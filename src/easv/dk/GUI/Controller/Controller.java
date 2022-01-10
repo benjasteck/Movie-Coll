@@ -56,6 +56,8 @@ public class Controller {
     @FXML
     private Button btnPlayMovie;
     @FXML
+    private Button btnAscendDescend;
+    @FXML
     private  ComboBox sorterBox;
 
 
@@ -220,6 +222,22 @@ public class Controller {
 
     }
 
+    public void getBtnAscendDescend(ActionEvent actionEvent) {
+    boolean ascending = false;
+    int pressed = 0;
+    pressed++;
+
+    if (pressed == 1)
+        ascending = true;
+
+    if (pressed == 2)
+        ascending = false;
+
+    if (pressed == 3)
+        pressed = 0;
+
+    }
+
 /*
    public void sorter(){
         TableView<Movie> table = new TableView<>();
@@ -241,5 +259,6 @@ public class Controller {
         sortedData.comparatorProperty().bind(table.comparatorProperty());
     }
 */
+
 
 }

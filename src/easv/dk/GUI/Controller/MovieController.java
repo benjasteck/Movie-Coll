@@ -66,6 +66,7 @@ public class MovieController {
         File file = fileChooser.showOpenDialog(window);
         actionEvent.consume();
     }
+
 }
 
 
