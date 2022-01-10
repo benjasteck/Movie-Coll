@@ -33,7 +33,7 @@ public class MovieController {
         //adds different Categories to the comboBox that the user can choose from
 
         comboBoxCategory.getItems().removeAll(comboBoxCategory.getItems());
-        comboBoxCategory.getItems().addAll("Action", "Comedy", "Drama", "Fantasy", "Horro", "Mystery", "Romance", "Thriller", "Western");
+        comboBoxCategory.getItems().addAll("Action", "Comedy", "Drama", "Fantasy", "Horror", "Mystery", "Romance", "Thriller", "Western");
         comboBoxCategory.getSelectionModel().select("Action");
     }
 
