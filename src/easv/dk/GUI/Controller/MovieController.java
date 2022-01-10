@@ -16,7 +16,8 @@ import java.io.File;
 public class MovieController {
 
 
-    public Button btnChooseFile;
+    @FXML
+    private Button btnChooseFile;
     @FXML
     private Button btnCancelEditingMovie;
     @FXML
