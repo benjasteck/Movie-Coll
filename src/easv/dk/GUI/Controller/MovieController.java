@@ -32,10 +32,6 @@ public class MovieController {
 
    @FXML
     public void cancelEditingMovie(ActionEvent actionEvent) {
-
-
-
-    public void cancelEditingMovie(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Discard changes ?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
         alert.showAndWait();
 
@@ -44,7 +40,7 @@ public class MovieController {
            Stage stage = (Stage) cancelEditingMovie.getScene().getWindow();
            stage.close();
 
-            Stage stage = (Stage) cancelEditingMovie.getScene().getWindow();
+            stage = (Stage) cancelEditingMovie.getScene().getWindow();
              stage.close();
         }
 

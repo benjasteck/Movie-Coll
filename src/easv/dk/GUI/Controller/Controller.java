@@ -8,7 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
-import javafx.event.ActionEvent;
+import javafx.event.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -68,7 +68,7 @@ public class Controller {
     }
 
 
-    @Override
+
     public void initialize(URL location, ResourceBundle resources) {
         sorterBox.getItems().removeAll(sorterBox.getItems());
         sorterBox.getItems().addAll("IMDB Score", "Title", "Category");
@@ -77,7 +77,7 @@ public class Controller {
 
 
 
-    public void newCategory(ActionEvent actionEvent) {
+
 
     public void newCategory(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
