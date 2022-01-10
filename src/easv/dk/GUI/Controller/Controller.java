@@ -85,6 +85,18 @@ public class Controller {
         stage.centerOnScreen();
         stage.show();
     }
+    public void openRateMovieWindow(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getClassLoader().getResource("easv/dk/GUI/View/rateMovieWindow.fxml"));
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setResizable(false);
+        stage.setTitle("Rate Movie");
+        stage.centerOnScreen();
+        stage.show();
+    }
+
 
     public void editCategory(ActionEvent actionEvent) {
     }
@@ -105,8 +117,6 @@ public class Controller {
     }
 
 
-    public void openRateMovieWindow(ActionEvent actionEvent) {
-    }
 
 
     public void closeApplication(ActionEvent actionEvent) {
