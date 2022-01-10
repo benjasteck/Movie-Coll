@@ -2,17 +2,22 @@ package easv.dk.GUI.Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
+import javafx.stage.Window;
 
 import java.awt.*;
+import java.io.File;
 
 public class MovieController {
 
 
+    public Button btnChooseFile;
     @FXML
     private ComboBox comboBoxCategory;
 
@@ -30,6 +35,14 @@ public class MovieController {
         comboBoxCategory.getItems().removeAll(comboBoxCategory.getItems());
         comboBoxCategory.getItems().addAll("Action", "Comedy", "Drama", "Fantasy", "Horro", "Mystery", "Romance", "Thriller", "Western");
         comboBoxCategory.getSelectionModel().select("Action");
+    }
+
+    public void chooseFile(ActionEvent actionEvent) {
+        // double clicking on the "choose" button will open another window with your computer´s files
+        Window window = ((Node) (actionEvent.getSource())).getScene().getWindow();
+        FileChooser fileChooser = new FileChooser();
+        File file = fileChooser.showOpenDialog(window);
+        actionEvent.consume();
     }
 }
   // @FXML

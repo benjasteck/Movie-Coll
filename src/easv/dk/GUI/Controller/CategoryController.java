@@ -15,7 +15,7 @@ public class CategoryController {
     private Button btnCancelEditingCategory;
 
 
-
+/*
     public void cancelEditingCategory(ActionEvent actionEvent) {
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Discard changes ?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
@@ -28,4 +28,6 @@ public class CategoryController {
             stage.close();
         }
     }
+    */
+
 }
