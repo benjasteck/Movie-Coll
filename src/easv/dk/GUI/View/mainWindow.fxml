@@ -21,8 +21,6 @@
       <Button fx:id="btnAddMovies" layoutX="316.0" layoutY="530.0" mnemonicParsing="false" onAction="#addMovies" text="Add" />
       <Button fx:id="btnDeleteMovies" layoutX="608.0" layoutY="531.0" mnemonicParsing="false" onAction="#deleteMovies" text="Delete" />
       <Button fx:id="btnEditMovies" layoutX="555.0" layoutY="531.0" mnemonicParsing="false" onAction="#editMovies" text="Edit" />
-      <TableView layoutX="29.0" layoutY="183.0" prefHeight="340.0" prefWidth="200.0" />
-      <TableView fx:id="movieTable" layoutX="501.0" layoutY="183.0" prefHeight="340.0" prefWidth="341.0" />
       <Button layoutX="251.0" layoutY="531.0" mnemonicParsing="false" text="Delete" />
       <Button fx:id="btnNewMovie" layoutX="501.0" layoutY="531.0" mnemonicParsing="false" onAction="#openNewMovieWindow" text="New" />
       <Label layoutX="29.0" layoutY="151.0" text="Categories" textFill="WHITE">
