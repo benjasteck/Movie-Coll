@@ -58,7 +58,7 @@ public class Controller {
     @FXML
     private Button btnAscendDescend;
     @FXML
-    private  ComboBox sorterBox;
+    private ComboBox sorterBox;
     public int pressed = 0;
 
 
@@ -70,16 +70,11 @@ public class Controller {
     }
 
 
-
     public void initialize(URL location, ResourceBundle resources) {
         sorterBox.getItems().removeAll(sorterBox.getItems());
         sorterBox.getItems().addAll("IMDB Score", "Title", "Category");
         sorterBox.getSelectionModel().select("Title");
     }
-
-
-
-
 
 
     public void openNewMovieWindow(ActionEvent actionEvent) throws IOException {
@@ -93,6 +88,7 @@ public class Controller {
         stage.centerOnScreen();
         stage.show();
     }
+
     public void openRateMovieWindow(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getClassLoader().getResource("easv/dk/GUI/View/rateMovieWindow.fxml"));
@@ -123,8 +119,6 @@ public class Controller {
 
     public void editMovies(ActionEvent actionEvent) {
     }
-
-
 
 
     public void closeApplication(ActionEvent actionEvent) {
@@ -210,31 +204,53 @@ public class Controller {
 
 
     }
-    public void sort(){
+
+    public void sort() {
         //constructors of the columns needed
         TableColumn movCol1 = (TableColumn) movieTable.getColumns().get(1);
         TableColumn movCol2 = (TableColumn) movieTable.getColumns().get(2);
         TableColumn catCol1 = (TableColumn) categoryTable.getColumns().get(1);
 
         //checks for selected colum
-        if (sorterBox.getValue() == ("Title")){
+        if (sorterBox.getValue() == ("Title")) {
             //checks for whether it should be ascending or descending
-            if (pressed == 1){
+            if (pressed == 1) {
                 movCol1.setSortType(TableColumn.SortType.ASCENDING);
                 movieTable.getSortOrder().add(movCol1);
                 movieTable.sort();
             }
-            if (pressed == 2){
+            if (pressed == 2) {
                 movCol1.setSortType(TableColumn.SortType.DESCENDING);
                 movieTable.getSortOrder().add(movCol1);
                 movieTable.sort();
             }
         }
-
-
-
-
-
+        if (sorterBox.getValue() == ("IMBD Score")) {
+            //checks for whether it should be ascending or descending
+            if (pressed == 1) {
+                movCol2.setSortType(TableColumn.SortType.ASCENDING);
+                movieTable.getSortOrder().add(movCol2);
+                movieTable.sort();
+            }
+            if (pressed == 2) {
+                movCol2.setSortType(TableColumn.SortType.DESCENDING);
+                movieTable.getSortOrder().add(movCol2);
+                movieTable.sort();
+            }
+        }
+        if (sorterBox.getValue() == ("Category")) {
+            //checks for whether it should be ascending or descending
+            if (pressed == 1) {
+                catCol1.setSortType(TableColumn.SortType.ASCENDING);
+                categoryTable.getSortOrder().add(catCol1);
+                categoryTable.sort();
+            }
+            if (pressed == 2) {
+                catCol1.setSortType(TableColumn.SortType.DESCENDING);
+                categoryTable.getSortOrder().add(catCol1);
+                categoryTable.sort();
+            }
+        }
 
 
     }
@@ -263,17 +279,17 @@ public class Controller {
         return pressed;
 
 
-    public void openNewCategoryWindow(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getClassLoader().getResource("easv/dk/GUI/View/categoryWindow.fxml"));
-        Parent root = loader.load();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.setResizable(false);
-        stage.setTitle("New Category");
-        stage.centerOnScreen();
-        stage.show();
-    }
+        public void openNewCategoryWindow (ActionEvent actionEvent) throws IOException {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getClassLoader().getResource("easv/dk/GUI/View/categoryWindow.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.setResizable(false);
+            stage.setTitle("New Category");
+            stage.centerOnScreen();
+            stage.show();
+        }
 
 /*
    public void sorter(){
@@ -298,4 +314,5 @@ public class Controller {
 */
 
 
+    }
 }
