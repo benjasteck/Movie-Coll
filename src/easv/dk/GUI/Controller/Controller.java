@@ -150,7 +150,7 @@ public class Controller {
         movieTable.getColumns().add(column3);
         movieTable.getColumns().add(column4);
 
-        //  movieTable.getItems().addAll(MovieModel.getListModel()); -> list in MovieModel needs to be created that it works
+        movieTable.getItems().addAll(MovieModel.getAllMovies());// -> list in MovieModel needs to be created that it works
 
     }
 
@@ -163,7 +163,7 @@ public class Controller {
         categoryTable.getColumns().add(column1);
         categoryTable.getColumns().add(column2);
 
-        // categoryTable.getItems().addAll(CategoryModel.getListCategory()); -> List in CategoryModel needs to be created first
+        categoryTable.getItems().addAll(CategoryModel.getAllCategories()); //-> List in CategoryModel needs to be created first
     }
 
     public void filter() {
