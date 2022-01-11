@@ -13,9 +13,9 @@ import easv.dk.BE.Movie;
 
 public class MovieDAO {
 
-    ConnectionManager cm;
+    easv.dk.DAL.ConnectionManager cm;
     public MovieDAO() throws IOException {
-        cm = new ConnectionManager();
+        cm = new easv.dk.DAL.ConnectionManager();
     }
     //Insert values to the movie table.
     public Movie createMovie(Movie movie) throws Exception {

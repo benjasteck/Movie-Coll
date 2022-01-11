@@ -31,6 +31,7 @@ public class CategoryModel {
     }
 
     public void deleteCategory(Category selectedItem) {
+
         Manager.deleteCategory(selectedItem);
     }
 }

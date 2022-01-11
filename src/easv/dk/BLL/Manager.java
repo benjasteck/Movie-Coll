@@ -1,4 +1,4 @@
-package easv.dk.BLL;
+package easv.dk.bll;
 
 
 import easv.dk.BE.Category;
@@ -7,7 +7,10 @@ import easv.dk.DAL.CatMovieDAO;
 import easv.dk.DAL.CategoryDAO;
 import easv.dk.DAL.MovieDAO;
 
-public class Manager implements LogicInterface{
+import java.sql.SQLException;
+import java.util.List;
+
+public class Manager implements easv.dk.bll.LogicInterface {
 
 
     /*public List <Category> getAllCategories() throws bllException{}
@@ -29,6 +32,31 @@ public class Manager implements LogicInterface{
 
     public static void deleteCategory(Category selectedItem) {
       //  CategoryDAO.deleteCategory(selectedItem);
+    }
+
+
+    public List<Movie> getMoviesFromCategories(Category category) {
+        return null;
+    }
+
+
+    public List<Movie> getAllMovies() throws SQLException {
+        return null;
+    }
+
+
+    public Movie createMovie(Movie movie) throws SQLException {
+        return null;
+    }
+
+
+    public List<Category> getAllCategories() {
+        return null;
+    }
+
+
+    public Category createCategory(String name) {
+        return null;
     }
 
     public static void deleteMovie(Movie selectedItem) {
