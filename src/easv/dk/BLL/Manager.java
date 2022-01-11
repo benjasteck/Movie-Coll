@@ -39,6 +39,16 @@ public class Manager implements easv.dk.bll.LogicInterface {
         return null;
     }
 
+    @Override
+    public void updateMovie(String title, double userRating, double imbdRating, String lastView, String movieUrl, int id) throws SQLException {
+
+    }
+
+    @Override
+    public void updateCategory(String name, int id) throws SQLException {
+
+    }
+
 
     public List<Movie> getAllMovies() throws SQLException {
         return null;
