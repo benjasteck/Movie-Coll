@@ -9,9 +9,11 @@ import com.microsoft.sqlserver.jdbc.SQLServerException;
 import easv.dk.BE.Movie;
 
 
+
+
 public class MovieDAO {
 
-   /* ConnectionManager cm;
+    ConnectionManager cm;
     public MovieDAO() throws IOException {
         cm = new ConnectionManager();
     }
@@ -23,18 +25,21 @@ public class MovieDAO {
             PreparedStatement pststmtInsertMovie = con.prepareStatement(sqlSelectMovie, Statement.RETURN_GENERATED_KEYS);
 
             pststmtInsertMovie.setString(1,movie.getTitle());
-            pststmtInsertMovie.setInt(2,movie.getImdbRating());
-            pststmtInsertMovie.setString(3,movie.getMovieUrl());
-            pststmtInsertMovie.setDate(4, (Date) movie.getLastView());
+            pststmtInsertMovie.setDouble(2,movie.getUserRating());
+            pststmtInsertMovie.setDouble(3,movie.getImdbRating());
+            pststmtInsertMovie.setString(4,movie.getMovieUrl());
+            pststmtInsertMovie.setString(5,movie.getLastView());
             pststmtInsertMovie.execute();
             ResultSet rs = pststmtInsertMovie.getGeneratedKeys();
             while(rs.next()){
+
                 movieCreated = new Movie(movie.getTitle(),
-                        rs.getInt(1),
+                        movie.getUserRating(),
                         movie.getImdbRating(),
                         movie.getLastView(),
                         movie.getMovieUrl(),
-                        movie.getUserRating());
+                        rs.getInt(1)
+                        );
 
             }
             return movieCreated;
@@ -48,12 +53,13 @@ public class MovieDAO {
             ResultSet rs = pststmtmtselectMovie.executeQuery();
 
             while (rs.next()){
-                Movie movie = new Movie(rs.getString("id"),
-                        rs.getString("title"),
-                        rs.getString("rating"),
-                        rs.getString("filelink"),
-                        rs.getString("lastview"));
-
+                        String title= rs.getString("title");
+                        Double userRating=rs.getDouble("userRating");
+                        Double IMBDrating=rs.getDouble("IMDBrating");
+                        String lastView=rs.getString("lastview");
+                        String movieUrl=rs.getString("movieUrl");
+                        int Id=rs.getInt("id");
+                Movie movie = new Movie(title, userRating, IMBDrating,lastView,movieUrl,Id);
                 movieList.add(movie);
             }
         }
@@ -64,9 +70,9 @@ public class MovieDAO {
             String sqlUpdateMovie= "UPDATE Movie SET title=?, rating=?, filelink=?,lastview=? WHERE ID=?;";
             PreparedStatement pststmtUpdateMovie= con.prepareStatement(sqlUpdateMovie,Statement.RETURN_GENERATED_KEYS);
             pststmtUpdateMovie.setString(1,movie.getTitle());
-            pststmtUpdateMovie.setInt(2,movie.getImdbRating());
+            pststmtUpdateMovie.setDouble(2,movie.getImdbRating());
             pststmtUpdateMovie.setString(3,movie.getMovieUrl());
-            pststmtUpdateMovie.setDate(4, (Date) movie.getLastView());
+            pststmtUpdateMovie.setString(4, (String) movie.getLastView());
             pststmtUpdateMovie.setInt(5,movie.getId());
             pststmtUpdateMovie.executeUpdate();
             ResultSet rs = pststmtUpdateMovie.getGeneratedKeys();
@@ -83,5 +89,5 @@ public class MovieDAO {
 
 
     }
-*/
+
 }

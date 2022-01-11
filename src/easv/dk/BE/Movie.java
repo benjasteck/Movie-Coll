@@ -4,15 +4,15 @@ import java.util.Date;
 
 public class Movie{
         private String title;
-        private int userRating;
-        private int imdbRating;
+        private double userRating;
+        private double imdbRating;
         private String movieUrl;
-        private Date lastView;
+        private String lastView;
         private int Id;
         private int he;
         private String Category;
 
-        public Movie(String title, int userRating, int imdbRating, Date lastView, String movieUrl, int Id) {
+        public Movie(String title, double userRating, double imdbRating, String lastView, String movieUrl, int Id) {
                 this.title = title;
                 this.userRating = userRating;
                 this.imdbRating = imdbRating;
@@ -20,6 +20,9 @@ public class Movie{
                 this.movieUrl = movieUrl;
                 this.Id = Id;
         }
+
+        //public Movie(String spiderMan2, String s, String s1, String s2, String movieUrl) {
+      //  }
 
         public int getId() {
                 return Id;
@@ -29,13 +32,13 @@ public class Movie{
                 return title;
         }
 
-        public int getUserRating() {return userRating;}
+        public double getUserRating() {return userRating;}
 
-        public int getImdbRating() {
+        public double getImdbRating() {
                 return imdbRating;
         }
 
-        public Date getLastView() {
+        public String getLastView() {
                 return lastView;
         }
 
@@ -59,7 +62,7 @@ public class Movie{
                 this. movieUrl =  movieUrl;
         }
 
-        public void setLastView(Date lastView) {
+        public void setLastView(String lastView) {
                 this.lastView = lastView;
         }
 

@@ -186,7 +186,7 @@ public class Controller {
                     return true; // Filter title.
                 }
                 if (String.valueOf(movie1.getImdbRating()).contains(lowerCaseFilter)) {
-                    for (int n = movie1.getImdbRating(); n <= 10; n++) {
+                    for (Double n = movie1.getImdbRating(); n <= 10; n++) {
                         return true; //filter minimum imdbRating
                     }
                 }
