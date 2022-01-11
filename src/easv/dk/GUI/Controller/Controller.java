@@ -163,7 +163,7 @@ public class Controller {
         categoryTable.getColumns().add(column1);
         categoryTable.getColumns().add(column2);
 
-        // categoryTable.getItems().addAll(CategoryModel.getListCategory()); -> List in CategoryModel needs to be created first
+        categoryTable.getItems().addAll(CategoryModel.getAllCategories()); //-> List in CategoryModel needs to be created first
     }
 
     public void filter() {

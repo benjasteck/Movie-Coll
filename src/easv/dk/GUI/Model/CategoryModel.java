@@ -7,12 +7,15 @@ import javafx.collections.ObservableList;
 
 public class CategoryModel {
 
-    Manager manager;
     ObservableList<Category> getAllCategories;
 
     public CategoryModel() {
         getAllCategories = FXCollections.observableArrayList();
         setListCategory();
+    }
+
+    public static Object getAllCategories() {
+        return null;
     }
 
     private void setListCategory() {
