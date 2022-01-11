@@ -15,6 +15,13 @@ public class Category {
         this.Id = Id;
     }
 
+    public Category(int id, String name, int anInt) {
+    }
+
+    public Category(String name, int id) {
+    }
+
+
     public String getName() {
         return name;
     }

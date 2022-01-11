@@ -15,9 +15,6 @@ public class ConnectionManager {
 
     public ConnectionManager() throws IOException
     {
-        //Properties props = new Properties();
-       // props.load(new FileReader("Movie-Coll.cfg"));
-
         ds = new SQLServerDataSource();
         ds.setServerName("10.176.111.31");
         ds.setDatabaseName("movieCollDB");

@@ -84,7 +84,7 @@ public class MovieDAO {
             PreparedStatement pststmtDeleteMovie= con.prepareStatement(sqlDeleteMovie,Statement.RETURN_GENERATED_KEYS);
             pststmtDeleteMovie.setInt(1,movie.getId());
             pststmtDeleteMovie.execute();
-            //  ResultSet rs = pststmtDeleteMovie.getGeneratedKeys();
+            ResultSet rs = pststmtDeleteMovie.getGeneratedKeys();
         }
 
 
