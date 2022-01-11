@@ -9,7 +9,6 @@ public class Movie{
         private String movieUrl;
         private Date lastView;
         private int Id;
-        private int he;
         private String Category;
 
         public Movie(String title, int userRating, int imdbRating, Date lastView, String movieUrl, int Id) {
