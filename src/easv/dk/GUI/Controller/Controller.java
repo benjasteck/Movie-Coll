@@ -109,15 +109,13 @@ public class Controller {
     }
 
     public void deleteCategory(ActionEvent actionEvent) {
-    }
-
-    public void removeMovies(ActionEvent actionEvent) {
-    }
-
-    public void addMovies(ActionEvent actionEvent) {
+       /* CategoryModel.deleteCategory(categoryTable.getSelectionModel().getSelectedItem());
+        categoryTable.getItems().remove(categoryTable.getSelectionModel().getSelectedIndex()); */
     }
 
     public void deleteMovies(ActionEvent actionEvent) {
+      /*  MovieModel.deleteMovie(movieTable.getSelectionModel().getSelectedItem());
+        movieTable.getItems().remove(movieTable.getSelectionModel().getSelectedItem());*/
     }
 
     public void editMovies(ActionEvent actionEvent) {
@@ -150,7 +148,7 @@ public class Controller {
         movieTable.getColumns().add(column3);
         movieTable.getColumns().add(column4);
 
-        //  movieTable.getItems().addAll(MovieModel.getListModel()); -> list in MovieModel needs to be created that it works
+        movieTable.getItems().addAll(MovieModel.getAllMovies());// -> list in MovieModel needs to be created that it works
 
     }
 
@@ -163,7 +161,7 @@ public class Controller {
         categoryTable.getColumns().add(column1);
         categoryTable.getColumns().add(column2);
 
-        // categoryTable.getItems().addAll(CategoryModel.getListCategory()); -> List in CategoryModel needs to be created first
+        categoryTable.getItems().addAll(CategoryModel.getAllCategories()); //-> List in CategoryModel needs to be created first
     }
 
     public void filter() {
@@ -295,7 +293,6 @@ public class Controller {
         stage.centerOnScreen();
         stage.show();
     }
-
 
 
     public void addMovieToCategory(ActionEvent actionEvent) { }

@@ -1,11 +1,14 @@
 package easv.dk.BLL;
 
 
+import easv.dk.BE.Category;
+import easv.dk.BE.Movie;
 import easv.dk.DAL.CatMovieDAO;
 import easv.dk.DAL.CategoryDAO;
 import easv.dk.DAL.MovieDAO;
 
 public class Manager implements LogicInterface{
+
 
     /*public List <Category> getAllCategories() throws bllException{}
     public List <Movie> getAllMovies() throws bllException{}
@@ -23,4 +26,12 @@ public class Manager implements LogicInterface{
     public void updateMovieRating(){}
     public void updateMovieDate(){}
     */
+
+    public static void deleteCategory(Category selectedItem) {
+      //  CategoryDAO.deleteCategory(selectedItem);
+    }
+
+    public static void deleteMovie(Movie selectedItem) {
+      //  MovieDAO.deleteMovie(selectedItem);
+    }
 }
