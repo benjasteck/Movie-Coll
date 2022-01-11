@@ -150,7 +150,7 @@ public class Controller {
         movieTable.getColumns().add(column3);
         movieTable.getColumns().add(column4);
 
-        //  movieTable.getItems().addAll(MovieModel.getListModel()); -> list in MovieModel needs to be created that it works
+        movieTable.getItems().addAll(MovieModel.getAllMovies());// -> list in MovieModel needs to be created that it works
 
     }
 
