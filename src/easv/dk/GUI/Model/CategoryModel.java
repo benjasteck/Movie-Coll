@@ -19,7 +19,7 @@ public class CategoryModel {
     }
 
     private void setListCategory() {
-      //  getAllCategories.setAll(Manager.getAllCategories);
+        //  getAllCategories.setAll(Manager.getAllCategories);
     }
 
     public ObservableList<Category> getGetAllCategories() {
@@ -28,5 +28,9 @@ public class CategoryModel {
 
     public void setGetAllCategories(ObservableList<Category> getAllCategories) {
         this.getAllCategories = getAllCategories;
+    }
+
+    public void deleteCategory(Category selectedItem) {
+        Manager.deleteCategory(selectedItem);
     }
 }

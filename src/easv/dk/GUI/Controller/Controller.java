@@ -109,15 +109,13 @@ public class Controller {
     }
 
     public void deleteCategory(ActionEvent actionEvent) {
-    }
-
-    public void removeMovies(ActionEvent actionEvent) {
-    }
-
-    public void addMovies(ActionEvent actionEvent) {
+       /* CategoryModel.deleteCategory(categoryTable.getSelectionModel().getSelectedItem());
+        categoryTable.getItems().remove(categoryTable.getSelectionModel().getSelectedIndex()); */
     }
 
     public void deleteMovies(ActionEvent actionEvent) {
+      /*  MovieModel.deleteMovie(movieTable.getSelectionModel().getSelectedItem());
+        movieTable.getItems().remove(movieTable.getSelectionModel().getSelectedItem());*/
     }
 
     public void editMovies(ActionEvent actionEvent) {
@@ -295,7 +293,6 @@ public class Controller {
         stage.centerOnScreen();
         stage.show();
     }
-
 
 
     public void addMovieToCategory(ActionEvent actionEvent) { }
