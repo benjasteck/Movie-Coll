@@ -73,10 +73,12 @@ public class Controller {
     }
 
 
-    public void initialize(URL location, ResourceBundle resources) {
+    @FXML
+    public void initialize() {
         sorterBox.getItems().removeAll(sorterBox.getItems());
-        sorterBox.getItems().addAll("IMDB Score", "Title", "Category");
-        sorterBox.getSelectionModel().select("Title");
+        sorterBox.getItems().addAll("Title", "IMBD Score", "Category");
+
+
     }
 
 
