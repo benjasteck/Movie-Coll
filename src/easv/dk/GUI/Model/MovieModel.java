@@ -3,6 +3,7 @@ package easv.dk.GUI.Model;
 import easv.dk.BE.Category;
 import easv.dk.BE.Movie;
 import easv.dk.BLL.Manager;
+import easv.dk.bll.Manager;
 import javafx.collections.ObservableList;
 
 public class MovieModel {
