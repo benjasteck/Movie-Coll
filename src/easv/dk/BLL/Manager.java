@@ -32,7 +32,7 @@ public class Manager implements easv.dk.bll.LogicInterface {
 
     public static void deleteCategory(Category selectedItem) {
 
-      return CategoryDAO.deleteCategory(selectedItem);
+      return categoryDAO.deleteCategory(selectedItem);
     }
 
     public static void deleteMovie(Movie selectedItem) {

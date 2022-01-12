@@ -15,13 +15,11 @@ public interface IDALmanager {
 
     public Category createCategory(Category category) throws Exception;
 
-    public static void deleteMovie(Movie movie) {
+    public void deleteMovie(Movie movie) throws SQLException;
 
-    }
+    
 
-    public static void deleteCategory(Category category) {
-
-    }
+    public void deleteCategory(Category category) throws SQLException;
 
     public List<Category> getCategoriesFromMovies(Category category);
 

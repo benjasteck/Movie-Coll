@@ -65,4 +65,14 @@ public class DALmanager implements IDALmanager {
     public void updateCategory(Category category) throws SQLException {
          //categoryDAO.updateCategory(category);
     }
+
+    public void deleteCategory(Category category) throws SQLException {
+        categoryDAO.deleteCategory(category);
+    }
+
+    public void deleteMovie(Movie movie) throws SQLException {
+        movieDAO.deleteMovie(movie);
+    }
+
+
 }
