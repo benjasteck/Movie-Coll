@@ -4,13 +4,25 @@ import easv.dk.BE.Category;
 import easv.dk.BE.Movie;
 
 import easv.dk.bll.Manager;
+import easv.dk.dal.manager.DALmanager;
 import javafx.collections.ObservableList;
+
+import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
 public class MovieModel {
 
-    public static ObservableList<Movie> getAllMovies() {
-      //  return movieObservableList; // return the backend saver for songs
-        return null;
+    private static Manager manager;
+
+
+
+    public MovieModel() throws IOException {
+        this.manager = new Manager();
+    }
+
+    public static List<Movie> getAllMovies1() throws SQLException {
+      return manager.getAllMovies();
     }
 
     public void deleteMovie(Movie selectedItem) {

@@ -24,8 +24,7 @@ public class DALmanager implements IDALmanager {
     @Override
     public List<Movie> getAllMovies() throws SQLException {
 
-        List<Movie> allMovies = movieDAO.getAllMovies();
-        return allMovies;
+        return movieDAO.getAllMovies();
     }
 
     @Override

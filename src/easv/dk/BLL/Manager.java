@@ -40,8 +40,7 @@ public class Manager implements easv.dk.bll.LogicInterface {
     @Override
     public List<Movie> getAllMovies() throws SQLException {
 
-        List<Movie> allMovies = daLmanager.getAllMovies();
-        return allMovies;
+        return daLmanager.getAllMovies();
     }
 
     @Override
