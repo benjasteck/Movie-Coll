@@ -1,14 +1,18 @@
 package easv.dk.DAL;
 
+import easv.dk.BE.Category;
+import easv.dk.BE.Movie;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 public class CatMovieDAO {
-        ConnectionManager cm;
+        easv.dk.DAL.ConnectionManager cm;
         public CatMovieDAO() {
             try {
-                cm = new ConnectionManager();
+                cm = new easv.dk.DAL.ConnectionManager();
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -23,5 +27,21 @@ public class CatMovieDAO {
             }
             return null;
         }
+
+    public List<Movie> getAllMoviesForGivenCategory(){
+        return null;
+    }
+
+    public List<Category> getAllCategoriesForGivenMovie(){
+        return null;
+    }
+
+    public void addMovieToCategory(){
+
+    }
+
+    public void removeMovieFromCategory(){
+
+    }
     }
 

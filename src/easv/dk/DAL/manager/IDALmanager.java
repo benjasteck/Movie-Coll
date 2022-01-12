@@ -1,4 +1,4 @@
-package easv.dk.bll;
+package easv.dk.dal.manager;
 
 import easv.dk.BE.Category;
 import easv.dk.BE.Movie;
@@ -6,8 +6,7 @@ import easv.dk.BE.Movie;
 import java.sql.SQLException;
 import java.util.List;
 
-public interface LogicInterface {
-
+public interface IDALmanager {
     public List<Movie> getAllMovies() throws SQLException;
 
     Movie createMovie(Movie movie) throws Exception;
@@ -33,7 +32,4 @@ public interface LogicInterface {
     public void addMovieToCategory();
 
     public void removeMovieFromCategory();
-
-
-
 }
