@@ -55,6 +55,7 @@ public class CategoryDAO {
         return categoryList;
     }
 
+
    /* public void updateCategory(Category category) throws SQLException {
         try (Connection con = cm.getConnection()) {
             String sqlUpdateCategory = "UPDATE category SET title=?, userRating=?,IMDBrating=?, filelink=?,lastview=? WHERE ID=?;";

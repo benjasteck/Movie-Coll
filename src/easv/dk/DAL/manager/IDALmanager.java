@@ -23,9 +23,11 @@ public interface IDALmanager {
 
     }
 
-    public List<Movie> getCategoriesFromMovies(Movie movie);
+    public List<Category> getCategoriesFromMovies(Category category);
 
-    public void updateMovie(String title, double userRating, double imbdRating, String lastView, String movieUrl, int id) throws SQLException;
+    public List<Movie> getMoviesFromCategories(Movie movie);
+
+    public void updateMovie(Movie movie) throws SQLException;
 
     public void updateCategory(String name, int id) throws SQLException;
 }

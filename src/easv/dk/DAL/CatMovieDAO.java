@@ -1,5 +1,6 @@
 package easv.dk.DAL;
 
+import easv.dk.BE.Category;
 import easv.dk.BE.Movie;
 
 import java.io.IOException;
@@ -28,6 +29,10 @@ public class CatMovieDAO {
         }
 
     public List<Movie> getAllMoviesForGivenCategory(){
+        return null;
+    }
+
+    public List<Category> getAllCategoriesForGivenMovie(){
         return null;
     }
 

@@ -47,17 +47,22 @@ public class DALmanager implements IDALmanager {
 
 
     @Override
-    public List<Movie> getCategoriesFromMovies(Movie movie) {
+    public List<Movie> getMoviesFromCategories(Movie movie) {
         return catMovieDAO.getAllMoviesForGivenCategory();
     }
 
     @Override
-    public void updateMovie(String title, double userRating, double imbdRating, String lastView, String movieUrl, int id) throws SQLException {
-
+    public List<Category> getCategoriesFromMovies(Category category) {
+        return catMovieDAO.getAllCategoriesForGivenMovie();
     }
 
     @Override
-    public void updateCategory(String name, int id) throws SQLException {
+    public void updateMovie(Movie movie) throws SQLException {
+       movieDAO.updateMovie(movie);
+    }
 
+    @Override
+    public void updateCategory(Category category) throws SQLException {
+         //categoryDAO.updateCategory(category);
     }
 }
