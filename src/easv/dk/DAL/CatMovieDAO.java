@@ -77,5 +77,13 @@ public class CatMovieDAO {
             //ResultSet rs = pststmtDeleteCatMovie.getGeneratedKeys();
         }
     }
+
+    public List<Movie> getAllMoviesForGivenCategory() {
+        return null;
+    }
+
+    public List<Category> getAllCategoriesForGivenMovie() {
+        return null;
+    }
 }
 

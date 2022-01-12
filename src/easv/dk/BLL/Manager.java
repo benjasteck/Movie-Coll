@@ -1,4 +1,4 @@
-package easv.dk.bll;
+package easv.dk.BLL;
 
 
 import easv.dk.BE.Category;
@@ -6,7 +6,7 @@ import easv.dk.BE.Movie;
 import easv.dk.DAL.CatMovieDAO;
 import easv.dk.DAL.CategoryDAO;
 import easv.dk.DAL.MovieDAO;
-import easv.dk.dal.manager.DALmanager;
+import easv.dk.DAL.manager.DALmanager;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -40,24 +40,28 @@ public class Manager implements easv.dk.bll.LogicInterface {
     @Override
     public List<Movie> getAllMovies() throws SQLException {
 
-        return daLmanager.getAllMovies();
+       // return daLmanager.getAllMovies();
+        return null;
     }
 
     @Override
     public Movie createMovie(Movie movie) throws Exception {
-        return daLmanager.createMovie(movie);
+       // return daLmanager.createMovie(movie);
+        return null;
     }
 
     @Override
     public List<Category> getAllCategories() throws SQLException {
-        List<Category> allCategories = daLmanager.getAllCategories();
-        return allCategories;
+       // List<Category> allCategories = daLmanager.getAllCategories();
+        //return allCategories;
+        return null;
     }
 
 
 
     public Category createCategory(Category category) throws Exception {
-        return daLmanager.createCategory(category);
+        //return daLmanager.createCategory(category);
+        return null;
     }
 
 
@@ -68,12 +72,13 @@ public class Manager implements easv.dk.bll.LogicInterface {
 
     @Override
     public List<Category> getCategoriesFromMovies(Category category) {
-        return daLmanager.getCategoriesFromMovies(category);
+   //     return daLmanager.getCategoriesFromMovies(category);
+        return null;
     }
 
     @Override
     public void updateMovie(Movie movie) throws SQLException {
-        daLmanager.updateMovie(movie);
+        //daLmanager.updateMovie(movie);
     }
 
     @Override
@@ -87,7 +92,7 @@ public class Manager implements easv.dk.bll.LogicInterface {
     }
 
     public void deleteCategory(Category category) throws SQLException {
-        daLmanager.deleteCategory(category);
+        //daLmanager.deleteCategory(category);
     }
 
     public void deleteMovie(Movie movie) throws SQLException {

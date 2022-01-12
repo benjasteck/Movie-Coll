@@ -3,8 +3,8 @@ package easv.dk.GUI.Model;
 import easv.dk.BE.Category;
 import easv.dk.BE.Movie;
 
-import easv.dk.bll.Manager;
-import easv.dk.dal.manager.DALmanager;
+import easv.dk.BLL.Manager;
+import easv.dk.DAL.manager.DALmanager;
 import javafx.collections.ObservableList;
 
 import java.io.IOException;

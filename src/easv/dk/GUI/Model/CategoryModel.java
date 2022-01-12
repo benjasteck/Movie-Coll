@@ -1,8 +1,8 @@
 package easv.dk.GUI.Model;
 
 import easv.dk.BE.Category;
-import easv.dk.bll.Manager;
-import easv.dk.bll.Manager;
+import easv.dk.BLL.Manager;
+import easv.dk.BLL.Manager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

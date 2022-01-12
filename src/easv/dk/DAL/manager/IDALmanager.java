@@ -1,4 +1,4 @@
-package easv.dk.dal.manager;
+package easv.dk.DAL.manager;
 
 import easv.dk.BE.Category;
 import easv.dk.BE.Movie;
