@@ -62,6 +62,11 @@ public class DALmanager implements IDALmanager {
     }
 
     @Override
+    public void updateCategory(String name, int id) throws SQLException {
+
+    }
+
+
     public void updateCategory(Category category) throws SQLException {
          //categoryDAO.updateCategory(category);
     }
@@ -74,5 +79,11 @@ public class DALmanager implements IDALmanager {
         movieDAO.deleteMovie(movie);
     }
 
+    public void addMovieToCategory(){
 
+    }
+
+    public void removeMovieFromCategory(){
+
+    }
 }

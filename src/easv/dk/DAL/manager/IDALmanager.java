@@ -17,7 +17,7 @@ public interface IDALmanager {
 
     public void deleteMovie(Movie movie) throws SQLException;
 
-    
+
 
     public void deleteCategory(Category category) throws SQLException;
 
@@ -28,4 +28,8 @@ public interface IDALmanager {
     public void updateMovie(Movie movie) throws SQLException;
 
     public void updateCategory(String name, int id) throws SQLException;
+
+    public void addMovieToCategory();
+
+    public void removeMovieFromCategory();
 }
