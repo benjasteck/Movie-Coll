@@ -31,9 +31,13 @@ public class Manager implements easv.dk.bll.LogicInterface {
     */
 
     public static void deleteCategory(Category selectedItem) {
-      //  CategoryDAO.deleteCategory(selectedItem);
+
+      return CategoryDAO.deleteCategory(selectedItem);
     }
 
+    public static void deleteMovie(Movie selectedItem) {
+        //  MovieDAO.deleteMovie(selectedItem);
+    }
 
     public List<Movie> getMoviesFromCategories(Category category) {
         return null;
@@ -54,13 +58,11 @@ public class Manager implements easv.dk.bll.LogicInterface {
         return null;
     }
 
-
-    public Movie createMovie(Movie movie) throws SQLException {
+    public List<Category> getAllCategories() {
         return null;
     }
 
-
-    public List<Category> getAllCategories() {
+    public Movie createMovie(Movie movie) throws SQLException {
         return null;
     }
 
@@ -69,7 +71,5 @@ public class Manager implements easv.dk.bll.LogicInterface {
         return null;
     }
 
-    public static void deleteMovie(Movie selectedItem) {
-      //  MovieDAO.deleteMovie(selectedItem);
-    }
+
 }

@@ -15,7 +15,7 @@ public class CategoryDAO {
         cm = new easv.dk.DAL.ConnectionManager();
     }
 
-    private Category createNewCategory(Category category) throws Exception {
+    public Category createNewCategory(Category category) throws Exception {
         Category creatCategory = null;
         try (Connection con = cm.getConnection()) {
             String sqlSelectCategory = "INSERT INTO category VALUES(?,?)";
