@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 import javafx.scene.*;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class Controller {
@@ -74,9 +75,11 @@ public class Controller {
 
 
     @FXML
-    public void initialize() {
+    public void initialize() throws SQLException {
         sorterBox.getItems().removeAll(sorterBox.getItems());
         sorterBox.getItems().addAll("Title", "IMBD Score", "Category");
+
+        //setUpMovieTable();
 
 
     }
@@ -135,7 +138,7 @@ public class Controller {
         }
     }
 
-    public void setUpMovieTable() {
+    public void setUpMovieTable() throws SQLException {
         TableColumn<Movie, String> column1 = new TableColumn<>("Name");
         column1.setCellValueFactory(new PropertyValueFactory<>("title"));
         TableColumn<Movie, String> column2 = new TableColumn<>("IMBD Rating");
@@ -150,7 +153,7 @@ public class Controller {
         movieTable.getColumns().add(column3);
         movieTable.getColumns().add(column4);
 
-        movieTable.getItems().addAll(MovieModel.getAllMovies());// -> list in MovieModel needs to be created that it works
+        movieTable.getItems().addAll(MovieModel.getAllMovies1());// -> list in MovieModel needs to be created that it works
 
     }
 
@@ -166,9 +169,9 @@ public class Controller {
         categoryTable.getItems().addAll(CategoryModel.getAllCategories()); //-> List in CategoryModel needs to be created first
     }
 
-    public void filter() {
+    public void filter() throws SQLException {
 
-        dataList.addAll((Movie) MovieModel.getAllMovies()); //<-- depending on what name the method gets
+        dataList.addAll((Movie) MovieModel.getAllMovies1()); //<-- depending on what name the method gets
         FilteredList<Movie> filteredData = new FilteredList<>(dataList, b -> true);
 
         searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
