@@ -6,12 +6,15 @@ import easv.dk.BE.Movie;
 import easv.dk.DAL.CatMovieDAO;
 import easv.dk.DAL.CategoryDAO;
 import easv.dk.DAL.MovieDAO;
+import easv.dk.dal.manager.DALmanager;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
 public class Manager implements easv.dk.bll.LogicInterface {
 
+   private DALmanager daLmanager;
 
     /*public List <Category> getAllCategories() throws bllException{}
     public List <Movie> getAllMovies() throws bllException{}
@@ -30,22 +33,48 @@ public class Manager implements easv.dk.bll.LogicInterface {
     public void updateMovieDate(){}
     */
 
-    public static void deleteCategory(Category selectedItem) {
-
-      return categoryDAO.deleteCategory(selectedItem);
-    }
-
-    public static void deleteMovie(Movie selectedItem) {
-        //  MovieDAO.deleteMovie(selectedItem);
-    }
-
-    public List<Movie> getMoviesFromCategories(Category category) {
-        return null;
+    public Manager() throws IOException {
+        this.daLmanager = new DALmanager();
     }
 
     @Override
-    public void updateMovie(String title, double userRating, double imbdRating, String lastView, String movieUrl, int id) throws SQLException {
+    public List<Movie> getAllMovies() throws SQLException {
 
+        List<Movie> allMovies = daLmanager.getAllMovies();
+        return allMovies;
+    }
+
+    @Override
+    public Movie createMovie(Movie movie) throws Exception {
+        return daLmanager.createMovie(movie);
+    }
+
+    @Override
+    public List<Category> getAllCategories() throws SQLException {
+        List<Category> allCategories = daLmanager.getAllCategories();
+        return allCategories;
+    }
+
+
+
+    public Category createCategory(Category category) throws Exception {
+        return daLmanager.createCategory(category);
+    }
+
+
+    @Override
+    public List<Movie> getMoviesFromCategories(Movie movie) {
+        return daLmanager.getMoviesFromCategories(movie);
+    }
+
+    @Override
+    public List<Category> getCategoriesFromMovies(Category category) {
+        return daLmanager.getCategoriesFromMovies(category);
+    }
+
+    @Override
+    public void updateMovie(Movie movie) throws SQLException {
+        daLmanager.updateMovie(movie);
     }
 
     @Override
@@ -54,22 +83,24 @@ public class Manager implements easv.dk.bll.LogicInterface {
     }
 
 
-    public List<Movie> getAllMovies() throws SQLException {
-        return null;
+    public void updateCategory(Category category) throws SQLException {
+        //categoryDAO.updateCategory(category);
     }
 
-    public List<Category> getAllCategories() {
-        return null;
+    public void deleteCategory(Category category) throws SQLException {
+        daLmanager.deleteCategory(category);
     }
 
-    public Movie createMovie(Movie movie) throws SQLException {
-        return null;
+    public void deleteMovie(Movie movie) throws SQLException {
+        daLmanager.deleteMovie(movie);
     }
 
+    public void addMovieToCategory(){
 
-    public Category createCategory(String name) {
-        return null;
     }
 
+    public void removeMovieFromCategory(){
+
+    }
 
 }

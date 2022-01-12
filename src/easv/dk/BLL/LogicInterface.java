@@ -8,26 +8,31 @@ import java.util.List;
 
 public interface LogicInterface {
 
-public List<Movie> getAllMovies() throws SQLException;
+    public List<Movie> getAllMovies() throws SQLException;
 
-    Movie createMovie(Movie movie) throws SQLException;
+    Movie createMovie(Movie movie) throws Exception;
 
-    public List<Category>  getAllCategories();
+    public List<Category>  getAllCategories() throws SQLException;
 
-    public Category createCategory(String name);
+    public Category createCategory(Category category) throws Exception;
 
-    public static void deleteMovie(Movie movie) {
+    public void deleteMovie(Movie movie) throws SQLException;
 
-    }
 
-    public static void deleteCategory(Category category) {
 
-    }
+    public void deleteCategory(Category category) throws SQLException;
 
-    public List<Movie> getMoviesFromCategories(Category category);
+    public List<Category> getCategoriesFromMovies(Category category);
 
-    public void updateMovie(String title, double userRating, double imbdRating, String lastView, String movieUrl, int id) throws SQLException;
+    public List<Movie> getMoviesFromCategories(Movie movie);
+
+    public void updateMovie(Movie movie) throws SQLException;
+
     public void updateCategory(String name, int id) throws SQLException;
+
+    public void addMovieToCategory();
+
+    public void removeMovieFromCategory();
 
 
 

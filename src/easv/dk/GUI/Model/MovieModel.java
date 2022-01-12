@@ -14,6 +14,6 @@ public class MovieModel {
     }
 
     public void deleteMovie(Movie selectedItem) {
-        Manager.deleteMovie(selectedItem);
+      //  Manager.deleteMovie(selectedItem);
     }
 }
