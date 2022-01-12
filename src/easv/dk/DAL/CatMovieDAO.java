@@ -1,27 +1,81 @@
 package easv.dk.DAL;
 
+import easv.dk.BE.CatMovie;
+import easv.dk.BE.Category;
+import easv.dk.BE.Movie;
+
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class CatMovieDAO {
-        ConnectionManager cm;
-        public CatMovieDAO() {
-            try {
-                cm = new ConnectionManager();
+    ConnectionManager cm;
 
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+    public CatMovieDAO() {
+        try {
+            cm = new ConnectionManager();
 
-        public CatMovieDAO createIdMovie(CatMovieDAO catMovie) throws SQLException {
-            CatMovieDAO createIdMovie= null;
-            try (Connection con = cm.getConnection()){
-                String sqlSelectMovie = "";
-
-            }
-            return null;
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
+
+    public CatMovieDAO createIdMovie(CatMovieDAO catMovie) throws SQLException {
+        CatMovieDAO createIdMovie = null;
+        try (Connection con = cm.getConnection()) {
+            String sqlSelectMovie = "";
+
+        }
+        return null;
+    }
+
+    public List<Movie> getMovieFromCategory(Category category) {
+        List<Movie> movieList = new ArrayList<>();
+
+        return movieList;
+    }
+
+    private HashMap<Integer, Category> getMapCategory() throws IOException, SQLException {
+        CategoryDAO categoryDAO = new CategoryDAO();
+        HashMap<Integer, Category> mapCategories = new HashMap<>();
+        List<Category> allCategory = categoryDAO.getAllCategories();
+        for (Category cat : allCategory) {
+            mapCategories.put(cat.getId(), cat);
+        }
+        return mapCategories;
+    }
+
+    private HashMap<Integer, Movie> getMapMovie() throws IOException, SQLException {
+        MovieDAO movieDAO = new MovieDAO();
+        HashMap<Integer, Movie> mapMovies = new HashMap<>();
+        List<Movie> allMovies = movieDAO.getAllMovies();
+        for (Movie mov : allMovies) {
+            mapMovies.put(mov.getId(), mov);
+        }
+        return mapMovies;
+    }
+    public void updateCatMovie(CatMovie catMovie) throws SQLException {
+        try (Connection con = cm.getConnection()) {
+            String sqlUpdateCatMovie = "UPDATE catMovie SET categotyId=?, movieId=?, WHERE ID=?;";
+            PreparedStatement pststmtUpdateCatMovie = con.prepareStatement(sqlUpdateCatMovie, Statement.RETURN_GENERATED_KEYS);
+            pststmtUpdateCatMovie.setInt(1, catMovie.getCategoryID());
+            pststmtUpdateCatMovie.setDouble(2, catMovie.getMovieID());
+            pststmtUpdateCatMovie.setInt(5, catMovie.getId());
+            pststmtUpdateCatMovie.executeUpdate();
+            //ResultSet rs = pststmtUpdateCatMovie.getGeneratedKeys();
+        }
+    }
+
+    public void deleteCatMovie(CatMovie catMovie) throws SQLException {
+        try (Connection con = cm.getConnection()) {
+            String sqlDeleteCatMovie = "DELETE FROM catMovie WHERE ID=?;";
+            PreparedStatement pststmtDeleteCatMovie = con.prepareStatement(sqlDeleteCatMovie, Statement.RETURN_GENERATED_KEYS);
+            pststmtDeleteCatMovie.setInt(1, catMovie.getId());
+            pststmtDeleteCatMovie.execute();
+            //ResultSet rs = pststmtDeleteCatMovie.getGeneratedKeys();
+        }
+    }
+}
 

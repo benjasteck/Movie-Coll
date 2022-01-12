@@ -15,7 +15,7 @@ import java.util.List;
 public class Test {
     public static void main(String[] args) throws Exception {
         //createMovie();
-        getAllMovie();
+        //getAllMovie();
         //updateMovie();
         //deleteMovie();
         //System.out.println("?"+!connection.isClose());
@@ -42,27 +42,21 @@ public class Test {
 
     }
 
-    /*private static void getAllMovie() throws SQLException {
-        List<Movie> movieList= new ArrayList<>();
-        try(Connection con = cm.getConnection()){
-            String sqlSelectMovie= "SELECT * FROM Movie;";
-            PreparedStatement pststmtmtselectMovie= con.prepareStatement(sqlSelectMovie);
-            ResultSet rs= pststmtmtselectMovie.executeQuery();
-            while (rs.next()){
-                Movie movielist = new Movie(id,name);
-                        int id = rs.getInt(id);
-                        String name= rs.getString(name);
-                        //(rs.getInt("id"),
-                        //rs.getString("name"));
-                movieList.add(movielist);
-            }
-        }
-        return movieList;*/
     public static void getAllMovie() throws SQLException, IOException {
         MovieDAO myAccessToMovieDatabase = new MovieDAO();
         List<Movie> lıstOfAllMovie = myAccessToMovieDatabase.getAllMovies();
         for (Movie movie : lıstOfAllMovie) {
             System.out.println("Movie name: " + movie.getTitle() + " rating: " + movie.getUserRating() + " category: " + movie.getCategory());
         }
+    }
+    public static void updateMovie() throws IOException, SQLException {
+        MovieDAO movieDAO = new MovieDAO();
+        Movie movie = new Movie("Spider man",3,4.5,"2022/1/7","C://Movies/SpiderMan",2);
+        movieDAO.updateMovie(movie);
+    }
+    public static void deleteMovie() throws SQLException, IOException {
+        MovieDAO songDAO= new MovieDAO();
+        Movie movie = new Movie("Spider man",3,4.5,"2022/1/7","C://Movies/SpiderMan",2);
+        songDAO.deleteMovie(movie);
     }
 }
