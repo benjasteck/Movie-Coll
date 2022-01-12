@@ -59,7 +59,7 @@ public class MovieController {
     }
 
     public void chooseFile(ActionEvent actionEvent) {
-        // double clicking on the "choose" button will open another window with your computer´s files
+        // double-clicking on the "choose" button will open another window with your computer´s files
         Window window = ((Node) (actionEvent.getSource())).getScene().getWindow();
         FileChooser fileChooser = new FileChooser();
         File file = fileChooser.showOpenDialog(window);
