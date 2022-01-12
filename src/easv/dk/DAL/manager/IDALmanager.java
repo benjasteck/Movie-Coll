@@ -13,7 +13,7 @@ public interface IDALmanager {
 
     public List<Category>  getAllCategories() throws SQLException;
 
-    public Category createCategory(String name);
+    public Category createCategory(Category category) throws Exception;
 
     public static void deleteMovie(Movie movie) {
 

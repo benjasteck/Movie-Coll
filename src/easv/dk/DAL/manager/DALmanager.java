@@ -39,19 +39,16 @@ public class DALmanager implements IDALmanager {
         return allCategories;
     }
 
-    @Override
-    public Category createCategory(String name) {
-        return null;
-    }
 
 
     public Category createCategory(Category category) throws Exception {
         return categoryDAO.createNewCategory(category);
     }
 
+
     @Override
     public List<Movie> getCategoriesFromMovies(Movie movie) {
-        return null;
+        return catMovieDAO.getAllMoviesForGivenCategory();
     }
 
     @Override
