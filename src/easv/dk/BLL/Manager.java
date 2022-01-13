@@ -101,6 +101,11 @@ public class Manager implements easv.dk.bll.LogicInterface {
         daLmanager.deleteMovie(movie);
     }
 
+    @Override
+    public void deleteCategory(Category category) throws SQLException {
+
+    }
+
     public void addMovieToCategory(){
 
     }
