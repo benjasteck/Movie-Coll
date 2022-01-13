@@ -4,6 +4,7 @@
       <root url="jar://$USER_HOME$/Desktop/controlsfx-11.1.0.jar!/" />
       <root url="jar://$USER_HOME$/Downloads/controlsfx-11.1.0.jar!/" />
       <root url="jar://$USER_HOME$/Downloads/controlsfx-11.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../Desktop/controlsfx-11.1.0.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
