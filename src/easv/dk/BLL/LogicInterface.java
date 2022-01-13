@@ -24,7 +24,7 @@ public interface LogicInterface {
 
     public List<Category> getCategoriesFromMovies(Category category);
 
-    public List<Movie> getMoviesFromCategories(Movie movie);
+    public List<Movie> getMoviesFromCategories(Category category) throws SQLException;
 
     public void updateMovie(Movie movie) throws SQLException;
 

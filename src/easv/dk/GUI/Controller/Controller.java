@@ -158,7 +158,7 @@ public class Controller {
         movieTable.getColumns().add(column3);
         movieTable.getColumns().add(column4);
 
-        //movieTable.getItems().addAll(movieModel.getAllMovies());
+//        movieTable.getItems().addAll(movieModel.getAllMovies());
 
     }
 
@@ -307,7 +307,7 @@ public class Controller {
 
     public void addMovieToCategory(ActionEvent actionEvent) { }
 
-    public void testCatMovie(ActionEvent actionEvent) {
+    public void testCatMovie(ActionEvent actionEvent) throws SQLException {
         CatMovieDAO catMov = new CatMovieDAO();
         List<CatMovie> list = new ArrayList<>();
 

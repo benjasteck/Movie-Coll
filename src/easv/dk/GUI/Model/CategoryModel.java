@@ -35,7 +35,7 @@ public class CategoryModel {
     }
 
     public static void deleteCategory(Object selectedItem) throws SQLException {
-        Manager.deleteCategory(selectedItem);
+        //Manager.deleteCategory(selectedItem);
     }
 
 }
