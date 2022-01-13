@@ -84,5 +84,6 @@
             <Font name="System Bold" size="25.0" />
          </font>
       </Button>
+      <Button layoutX="92.0" layoutY="25.0" mnemonicParsing="false" onAction="#testCatMovie" text="Button" />
    </children>
 </AnchorPane>

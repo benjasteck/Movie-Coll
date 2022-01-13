@@ -1,7 +1,9 @@
 package easv.dk.GUI.Controller;
 
+import easv.dk.BE.CatMovie;
 import easv.dk.BE.Category;
 import easv.dk.BE.Movie;
+import easv.dk.DAL.CatMovieDAO;
 import easv.dk.GUI.Model.CategoryModel;
 import easv.dk.GUI.Model.MovieModel;
 import javafx.collections.FXCollections;
@@ -20,6 +22,8 @@ import javafx.scene.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controller {
@@ -79,7 +83,8 @@ public class Controller {
         sorterBox.getItems().removeAll(sorterBox.getItems());
         sorterBox.getItems().addAll("Title", "IMBD Score", "Category");
 
-        //setUpMovieTable();
+        setUpMovieTable();
+
 
 
     }
@@ -153,7 +158,7 @@ public class Controller {
         movieTable.getColumns().add(column3);
         movieTable.getColumns().add(column4);
 
-        movieTable.getItems().addAll(MovieModel.getAllMovies1());// -> list in MovieModel needs to be created that it works
+        //movieTable.getItems().addAll(movieModel.getAllMovies());
 
     }
 
@@ -166,12 +171,12 @@ public class Controller {
         categoryTable.getColumns().add(column1);
         categoryTable.getColumns().add(column2);
 
-        categoryTable.getItems().addAll(CategoryModel.getAllCategories()); //-> List in CategoryModel needs to be created first
+        categoryTable.getItems().addAll(categoryModel.getAllCategories());
     }
 
     public void filter() throws SQLException {
 
-        dataList.addAll((Movie) MovieModel.getAllMovies1()); //<-- depending on what name the method gets
+        dataList.addAll((Movie) MovieModel.getAllMovies()); //<-- depending on what name the method gets
         FilteredList<Movie> filteredData = new FilteredList<>(dataList, b -> true);
 
         searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -301,7 +306,20 @@ public class Controller {
 
 
     public void addMovieToCategory(ActionEvent actionEvent) { }
-        //when button is clicked, the selected movie will be added to the current category
+
+    public void testCatMovie(ActionEvent actionEvent) {
+        CatMovieDAO catMov = new CatMovieDAO();
+        List<CatMovie> list = new ArrayList<>();
+
+        list.add(new CatMovie(1,1));
+        list.add(new CatMovie(2,1));
+        list.add(new CatMovie(3,1));
+
+        catMov.createCategoryMovie(list);
+
+        catMov.getAllCatMovies();
+    }
+    //when button is clicked, the selected movie will be added to the current category
         //System.out.println(movieTable.getSelectionModel().getSelectedItem());
        // movieOnCategory.getItems().add(movieTable.getSelectionModel().getSelectedItem());
 
