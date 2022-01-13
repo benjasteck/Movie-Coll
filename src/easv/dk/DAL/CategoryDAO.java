@@ -32,7 +32,7 @@ public class CategoryDAO {
             int id = rs.getInt(1);
             createdCategory = new Category(id,  category.getName());
         }
-        rs.close();                         //closing all used obejcts
+        rs.close();                         //closing all used objects
         pststmtInsertCategory.close();
         con.close();
         return createdCategory;
@@ -53,7 +53,7 @@ public class CategoryDAO {
             Category category = new Category( Id,name);
             categoryList.add(category);
         }
-        //closing all used obejcts
+        //closing all used objects
         rs.close();
         pststmtmtselectCategory.close();
         con.close();
@@ -83,7 +83,7 @@ public class CategoryDAO {
         pststmtUpdateCategory.setString(1, category.getName());     //set parameters of query
         pststmtUpdateCategory.setInt(2, category.getId());
         pststmtUpdateCategory.executeUpdate();      //run query without getting data from database
-        pststmtUpdateCategory.close();  //closing all used obejcts
+        pststmtUpdateCategory.close();  //closing all used objects
         con.close();
     }
 
