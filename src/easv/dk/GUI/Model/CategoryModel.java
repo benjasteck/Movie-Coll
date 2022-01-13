@@ -6,6 +6,8 @@ import easv.dk.BLL.Manager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.sql.SQLException;
+
 public class CategoryModel {
 
     ObservableList<Category> getAllCategories;
@@ -19,6 +21,7 @@ public class CategoryModel {
         return null;
     }
 
+
     private void setListCategory() {
         //  getAllCategories.setAll(Manager.getAllCategories);
     }
@@ -31,8 +34,8 @@ public class CategoryModel {
         this.getAllCategories = getAllCategories;
     }
 
-    public void deleteCategory(Category selectedItem) {
-
-       // Manager.deleteCategory(selectedItem);
+    public static void deleteCategory(Object selectedItem) throws SQLException {
+        Manager.deleteCategory(selectedItem);
     }
+
 }

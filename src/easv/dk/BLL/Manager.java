@@ -37,6 +37,8 @@ public class Manager implements easv.dk.bll.LogicInterface {
         this.daLmanager = new DALmanager();
     }
 
+
+
     @Override
     public List<Movie> getAllMovies() throws SQLException {
 
@@ -91,10 +93,10 @@ public class Manager implements easv.dk.bll.LogicInterface {
         //categoryDAO.updateCategory(category);
     }
 
-    public void deleteCategory(Category category) throws SQLException {
-        //daLmanager.deleteCategory(category);
-    }
+    public static void deleteCategory(Object selectedItem) throws SQLException{
+        DALmanager.deleteCategory(selectedItem);
 
+    }
     public void deleteMovie(Movie movie) throws SQLException {
         daLmanager.deleteMovie(movie);
     }
