@@ -8,6 +8,6 @@
    <children>
       <Rating layoutX="80.0" layoutY="62.0" max="10" />
       <Button layoutX="300.0" layoutY="219.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="55.0" text="Save" />
-      <Button fx:id="btnCancelRatingMovie" layoutX="380.0" layoutY="219.0" mnemonicParsing="false" onAction="#cancelRatingMovie" prefHeight="25.0" prefWidth="55.0" text="Cancel" />
+      <Button fx:id="btnCancelRatingMovie" layoutX="380.0" layoutY="219.0" mnemonicParsing="false" onAction="#cancelRatingMovie" prefHeight="25.0" prefWidth="65.0" text="Cancel" />
    </children>
 </AnchorPane>

@@ -22,6 +22,49 @@ public class CatMovieDAO {
         }
     }
 
+    public void createCategoryMovie(List<CatMovie> list){
+        try (Connection con = cm.getConnection()) {
+
+            String sql = "INSERT INTO catMovie (category_id, movie_id) VALUES (?,?)";
+            PreparedStatement statement = con.prepareStatement(sql);
+
+            for (CatMovie cM : list) {
+                statement.setInt(1, cM.getCategoryID());
+                statement.setInt(2, cM.getMovieID());
+                statement.executeUpdate();
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public List<CatMovie> getAllCatMovies() {
+
+        ArrayList<CatMovie> catMovies = new ArrayList<>();
+        try (Connection con = cm.getConnection()) {
+
+            String sql = "SELECT * FROM catMovie;";
+            Statement statement = con.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+
+            while (rs.next()) {
+                int idCat = rs.getInt("category_id");
+                int idMov = rs.getInt("movie_id");
+                CatMovie catMovie = new CatMovie(idCat, idMov);
+                catMovies.add(catMovie);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        for (CatMovie c: catMovies){
+            System.out.println("Movie with id: "+c.getMovieID()+"  has category: " +c.getCategoryID() );
+        }
+
+        return catMovies;
+    }
+
+
     public CatMovieDAO createIdMovie(CatMovieDAO catMovie) throws SQLException {
         CatMovieDAO createIdMovie = null;
         try (Connection con = cm.getConnection()) {
@@ -36,6 +79,11 @@ public class CatMovieDAO {
 
         return movieList;
     }
+
+
+
+
+
 
 
 

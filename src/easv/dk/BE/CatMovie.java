@@ -5,6 +5,11 @@ public class CatMovie {
     private int movieID;
     private int categoryID;
 
+    public CatMovie(int categoryID, int movieID){
+        this.categoryID = categoryID;
+        this.movieID = movieID;
+    }
+
     public int getId() {
         return id;
     }
