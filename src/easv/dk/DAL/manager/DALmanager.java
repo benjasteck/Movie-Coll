@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-public class DALmanager implements IDALmanager {
+public class DALmanager implements IDALManager {
     private easv.dk.DAL.CategoryDAO categoryDAO;
     private easv.dk.DAL.MovieDAO movieDAO;
     private easv.dk.DAL.CatMovieDAO catMovieDAO;
@@ -21,8 +21,7 @@ public class DALmanager implements IDALmanager {
         this.catMovieDAO = new CatMovieDAO();
     }
 
-    public static void deleteCategory(Object selectedItem) {
-    }
+
 
     @Override
     public List<Movie> getAllMovies() throws SQLException {
@@ -37,8 +36,7 @@ public class DALmanager implements IDALmanager {
 
     @Override
     public List<Category> getAllCategories() throws SQLException {
-        List<Category> allCategories = categoryDAO.getAllCategories();
-        return allCategories;
+        return categoryDAO.getAllCategories();
     }
 
 
@@ -48,15 +46,9 @@ public class DALmanager implements IDALmanager {
     }
 
 
-    @Override
-    public List<Movie> getMoviesFromCategories(Movie movie) {
-        return catMovieDAO.getAllMoviesForGivenCategory();
-    }
 
-    @Override
-    public List<Category> getCategoriesFromMovies(Category category) {
-        return catMovieDAO.getAllCategoriesForGivenMovie();
-    }
+
+
 
     @Override
     public void updateMovie(Movie movie) throws SQLException {
@@ -65,27 +57,35 @@ public class DALmanager implements IDALmanager {
 
     @Override
     public void updateCategory(String name, int id) throws SQLException {
-
+        categoryDAO.updateCategory(new Category(id,name));
     }
 
 
-    public void updateCategory(Category category) throws SQLException {
-         //categoryDAO.updateCategory(category);
-    }
 
-    public void deleteCategory(Category category) throws SQLException {
+
+    public  void deleteCategory(Category category) throws SQLException {
         categoryDAO.deleteCategory(category);
+    }
+
+    @Override
+    public List<Category> getCategoriesFromMovies(Movie movie) throws SQLException {
+        return catMovieDAO.getAllCategoriesForGivenMovie(movie);
+    }
+
+    @Override
+    public List<Movie> getMoviesFromCategories(Category category) throws SQLException {
+        return catMovieDAO.getMovieFromCategory(category);
     }
 
     public void deleteMovie(Movie movie) throws SQLException {
         movieDAO.deleteMovie(movie);
     }
 
-    public void addMovieToCategory(){
-
+    public void addMovieToCategory(Category category,Movie movie) throws SQLException {
+        catMovieDAO.AddCategoryToMovie(category,movie);
     }
 
-    public void removeMovieFromCategory(){
-
+    public void removeMovieFromCategory(Category category,Movie movie) throws SQLException {
+catMovieDAO.removeCategoryFromMovie(category,movie);
     }
 }
