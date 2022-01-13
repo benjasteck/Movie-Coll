@@ -113,9 +113,9 @@ public class Controller {
     public void editCategory(ActionEvent actionEvent) {
     }
 
-    public void deleteCategory(ActionEvent actionEvent) {
-       /* CategoryModel.deleteCategory(categoryTable.getSelectionModel().getSelectedItem());
-        categoryTable.getItems().remove(categoryTable.getSelectionModel().getSelectedIndex()); */
+    public void deleteCategory(ActionEvent actionEvent) throws SQLException {
+       CategoryModel.deleteCategory(categoryTable.getSelectionModel().getSelectedItem());
+        categoryTable.getItems().remove(categoryTable.getSelectionModel().getSelectedIndex());
     }
 
     public void deleteMovies(ActionEvent actionEvent) {
