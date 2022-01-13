@@ -21,6 +21,9 @@ public class DALmanager implements IDALmanager {
         this.catMovieDAO = new CatMovieDAO();
     }
 
+    public static void deleteCategory(Object selectedItem) {
+    }
+
     @Override
     public List<Movie> getAllMovies() throws SQLException {
 
