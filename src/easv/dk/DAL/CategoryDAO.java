@@ -1,5 +1,6 @@
 package easv.dk.DAL;
 
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 import easv.dk.BE.Category;
 import easv.dk.BE.Movie;
 
@@ -16,69 +17,85 @@ public class CategoryDAO {
     }
 
     public Category createNewCategory(Category category) throws Exception {
-        Category creatCategory = null;
-        try (Connection con = cm.getConnection()) {
-            String sqlSelectCategory = "INSERT INTO category VALUES(?,?)";
-            PreparedStatement pststmtInsertCategory = con.prepareStatement(sqlSelectCategory, Statement.RETURN_GENERATED_KEYS);
-            pststmtInsertCategory.setInt(1, category.getId());
-            pststmtInsertCategory.setString(2, category.getName());
+        Category createdCategory = null;
+        Connection con = cm.getConnection();
+        String sqlSelectCategory = "INSERT INTO category VALUES(?)";        //id will be set in database automatically
 
-            pststmtInsertCategory.execute();
-            ResultSet rs = pststmtInsertCategory.getGeneratedKeys();
-            while (rs.next()) {
+        PreparedStatement pststmtInsertCategory =
+                con.prepareStatement(sqlSelectCategory, Statement.RETURN_GENERATED_KEYS);       //prepared statement is for set query parameters and run query in database
+        pststmtInsertCategory.setString(1, category.getName());
 
-                creatCategory = new Category(category.getId(),
-                        category.getName(),
-                        rs.getInt(1));
-
-
-            }
-            return creatCategory;
+        pststmtInsertCategory.execute();
+        ResultSet rs = pststmtInsertCategory.getGeneratedKeys();  //created identity id return
+        //result set is for getting data from executed query
+        while (rs.next()) {             //traverse results in result set and get data
+            int id = rs.getInt(1);
+            createdCategory = new Category(id,  category.getName());
         }
+        rs.close();                         //closing all used obejcts
+        pststmtInsertCategory.close();
+        con.close();
+        return createdCategory;
+
 
     }
 
     public List<Category> getAllCategories() throws SQLException {
         List<Category> categoryList = new ArrayList<>();
-        try (Connection con = cm.getConnection()) {
-            String sqlSelectCategory = "SELECT * FROM category;";
-            PreparedStatement pststmtmtselectCategory = con.prepareStatement(sqlSelectCategory);
-            ResultSet rs = pststmtmtselectCategory.executeQuery();
+        Connection con = cm.getConnection();
+        String sqlSelectCategory = "SELECT * FROM category;";
+        PreparedStatement pststmtmtselectCategory = con.prepareStatement(sqlSelectCategory);         //prepared statement is for set query parameters and run query in database
+        ResultSet rs = pststmtmtselectCategory.executeQuery();          //result set is for getting data from executed query
 
-            while (rs.next()) {
-                String name = rs.getString("name");
-                int Id = rs.getInt("Id");
-                Category category = new Category(name, Id);
-                categoryList.add(category);
-            }
+        while (rs.next()) {              //traverse results in result set and get data
+            String name = rs.getString("name");
+            int Id = rs.getInt("id");
+            Category category = new Category( Id,name);
+            categoryList.add(category);
         }
+        //closing all used obejcts
+        rs.close();
+        pststmtmtselectCategory.close();
+        con.close();
         return categoryList;
+    }
+    public Category getCategoryById(int id) throws SQLException {  //to get a single category
+        Category category=null;
+        Connection con=cm.getConnection();
+        String query="select * from category where id=?;";      //select category by Id
+        PreparedStatement preparedStatement=con.prepareStatement(query);
+        preparedStatement.setInt(1,id);
+        ResultSet resultSet= preparedStatement.executeQuery();
+
+        while (resultSet.next()){           //set retrieved data to category object
+            category=new Category(resultSet.getInt("id"),resultSet.getString("name"));
+        }
+        resultSet.close();          //closed used objects
+        preparedStatement.close();
+        con.close();
+        return category;
+    }
+
+    public void updateCategory(Category category) throws SQLException {
+        Connection con = cm.getConnection();
+        String sqlUpdateCategory = "UPDATE category SET name=? WHERE ID=?;";
+        PreparedStatement pststmtUpdateCategory = con.prepareStatement(sqlUpdateCategory, Statement.RETURN_GENERATED_KEYS);   //prepared statement is for set query parameters and run query in database
+        pststmtUpdateCategory.setString(1, category.getName());     //set parameters of query
+        pststmtUpdateCategory.setInt(2, category.getId());
+        pststmtUpdateCategory.executeUpdate();      //run query without getting data from database
+        pststmtUpdateCategory.close();  //closing all used obejcts
+        con.close();
     }
 
 
-   /* public void updateCategory(Category category) throws SQLException {
-        try (Connection con = cm.getConnection()) {
-            String sqlUpdateCategory = "UPDATE category SET title=?, userRating=?,IMDBrating=?, filelink=?,lastview=? WHERE ID=?;";
-            PreparedStatement pststmtUpdateCategory = con.prepareStatement(sqlUpdateCategory, Statement.RETURN_GENERATED_KEYS);
-            pststmtUpdateCategory.setString(1, category.gettitle());
-            pststmtUpdateCategory.setDouble(2, category.getuserRating);
-            pststmtUpdateCategory.setDouble(2, category.getIMDBrating());
-            pststmtUpdateCategory.setString(3, category.getMovieUrl());
-            pststmtUpdateCategory.setString(4, category.getLastView());
-            pststmtUpdateCategory.setInt(5, category.getId());
-            pststmtUpdateCategory.executeUpdate();
-            ResultSet rs = pststmtUpdateCategory.getGeneratedKeys();
-        }*/
-
-
     public void deleteCategory(Category category) throws SQLException {
-        try (Connection con = cm.getConnection()) {
-            String sqlDeleteCategory = "DELETE FROM category WHERE ID=?;";
-            PreparedStatement pststmtDeleteCategory = con.prepareStatement(sqlDeleteCategory, Statement.RETURN_GENERATED_KEYS);
-            pststmtDeleteCategory.setInt(1, category.getId());
-            pststmtDeleteCategory.execute();
-            ResultSet rs = pststmtDeleteCategory.getGeneratedKeys();
-        }
+        Connection con = cm.getConnection();
+        String sqlDeleteCategory = "DELETE FROM category WHERE ID=?;";
+        PreparedStatement pststmtDeleteCategory = con.prepareStatement(sqlDeleteCategory, Statement.RETURN_GENERATED_KEYS);  //prepared statement is for set query parameters and run query in database
+        pststmtDeleteCategory.setInt(1, category.getId()); //set query parameter
+        pststmtDeleteCategory.executeUpdate();
+        pststmtDeleteCategory.close();
+        con.close();
     }
 }
 

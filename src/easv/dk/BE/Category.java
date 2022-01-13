@@ -6,19 +6,20 @@ public class Category {
     private String name;
     private int movieCount = 0;
     private List<Movie> moviesInCategory;
-    private int Id;
+    private int id;
 
     public Category(int Id, String name, int movieCount, List<Movie> moviesInCategory) {
         this.name = name;
         this.movieCount = movieCount;
         this.moviesInCategory = moviesInCategory;
-        this.Id = Id;
+        this.id = Id;
     }
 
-    public Category(int id, String name, int anInt) {
-    }
 
-    public Category(String name, int id) {
+
+    public Category( int id,String name) {
+        this.name=name;
+        this.id =id;
     }
 
 
@@ -35,7 +36,7 @@ public class Category {
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setName(String name) {

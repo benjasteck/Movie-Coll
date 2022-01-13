@@ -37,25 +37,8 @@ public class CatMovieDAO {
         return movieList;
     }
 
-    private HashMap<Integer, Category> getMapCategory() throws IOException, SQLException {
-        CategoryDAO categoryDAO = new CategoryDAO();
-        HashMap<Integer, Category> mapCategories = new HashMap<>();
-        List<Category> allCategory = categoryDAO.getAllCategories();
-        for (Category cat : allCategory) {
-            mapCategories.put(cat.getId(), cat);
-        }
-        return mapCategories;
-    }
 
-    private HashMap<Integer, Movie> getMapMovie() throws IOException, SQLException {
-        MovieDAO movieDAO = new MovieDAO();
-        HashMap<Integer, Movie> mapMovies = new HashMap<>();
-        List<Movie> allMovies = movieDAO.getAllMovies();
-        for (Movie mov : allMovies) {
-            mapMovies.put(mov.getId(), mov);
-        }
-        return mapMovies;
-    }
+
     public void updateCatMovie(CatMovie catMovie) throws SQLException {
         try (Connection con = cm.getConnection()) {
             String sqlUpdateCatMovie = "UPDATE catMovie SET categotyId=?, movieId=?, WHERE ID=?;";
