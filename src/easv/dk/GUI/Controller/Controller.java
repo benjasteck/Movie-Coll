@@ -321,6 +321,18 @@ public class Controller {
 
         catMov.getAllCatMovies();
     }
+
+    public void newCategory(ActionEvent actionEvent) {
+    }
+
+    public void removeMovies(ActionEvent actionEvent) {
+    }
+
+    public void addMovies(ActionEvent actionEvent) {
+    }
+
+    public void newMovie(ActionEvent actionEvent) {
+    }
     //when button is clicked, the selected movie will be added to the current category
         //System.out.println(movieTable.getSelectionModel().getSelectedItem());
        // movieOnCategory.getItems().add(movieTable.getSelectionModel().getSelectedItem());
