@@ -85,7 +85,7 @@ public class Controller {
         sorterBox.getItems().addAll("Title", "IMBD Score", "Category");
 
         setUpMovieTable();
-        //setUpCategoryTable();
+        setUpCategoryTable();
 
 
 
@@ -148,8 +148,8 @@ public class Controller {
     public void setUpMovieTable() throws SQLException, IOException {
         TableColumn<Movie, String> column1 = new TableColumn<>("Name");
         column1.setCellValueFactory(new PropertyValueFactory<>("title"));
-        TableColumn<Movie, String> column2 = new TableColumn<>("IMBD Rating");
-        column2.setCellValueFactory(new PropertyValueFactory<>("imbdRating"));
+        TableColumn<Movie, String> column2 = new TableColumn<>("IMDB Rating");
+        column2.setCellValueFactory(new PropertyValueFactory<>("imdbRating"));
         TableColumn<Movie, String> column3 = new TableColumn<>("User Rating");
         column3.setCellValueFactory(new PropertyValueFactory<>("userRating"));
         TableColumn<Movie, String> column4 = new TableColumn<>("Last Viewed");
