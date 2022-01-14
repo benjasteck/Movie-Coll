@@ -150,6 +150,8 @@ public class Controller {
     public void setUpMovieTable() throws SQLException, IOException {
         TableColumn<Movie, String> column1 = new TableColumn<>("Name");
         column1.setCellValueFactory(new PropertyValueFactory<>("title"));
+        TableColumn<Movie,String> column5=new TableColumn<>("Category");
+        column5.setCellValueFactory(new PropertyValueFactory<>("category"));
         TableColumn<Movie, String> column2 = new TableColumn<>("IMDB Rating");
         column2.setCellValueFactory(new PropertyValueFactory<>("imdbRating"));
         TableColumn<Movie, String> column3 = new TableColumn<>("User Rating");
@@ -158,6 +160,7 @@ public class Controller {
         column4.setCellValueFactory(new PropertyValueFactory<>("lastView"));
 
         movieTable.getColumns().add(column1);
+        movieTable.getColumns().add(column5);
         movieTable.getColumns().add(column2);
         movieTable.getColumns().add(column3);
         movieTable.getColumns().add(column4);
