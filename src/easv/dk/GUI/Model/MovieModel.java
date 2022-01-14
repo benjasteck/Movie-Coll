@@ -38,7 +38,4 @@ public class MovieModel {
         return this.getAllMovies;
     }
 
-    public void deleteMovie(Movie selectedItem) {
-      //  Manager.deleteMovie(selectedItem);
-    }
 }
