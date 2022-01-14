@@ -28,8 +28,7 @@ import java.util.ResourceBundle;
 
 public class Controller {
 
-    private CategoryModel categoryModel;
-    private MovieModel movieModel;
+
     @FXML
     private TextField searchBar;
     private final ObservableList<Movie> dataList = FXCollections.observableArrayList();
@@ -66,6 +65,8 @@ public class Controller {
     private ComboBox sorterBox;
     public int pressed = 0;
 
+
+
     // MediaPlayer mediaPlayer;
     //    int currentMovie = -1;
 
@@ -73,13 +74,13 @@ public class Controller {
     //  Alert alert = new Alert(Alert.AlertType.WARNING, "Remember to delete movies that have a personal rating under 6 and have not been opened in more than 2 years", ButtonType.OK);
     //        alert.showAndWait();
 
-    public Controller() {
+    public Controller() throws IOException {
 
     }
 
 
     @FXML
-    public void initialize() throws SQLException {
+    public void initialize() throws SQLException, IOException {
         sorterBox.getItems().removeAll(sorterBox.getItems());
         sorterBox.getItems().addAll("Title", "IMBD Score", "Category");
 
@@ -88,8 +89,8 @@ public class Controller {
 
 
     }
-
-
+    MovieModel movieModel = new MovieModel();
+    private CategoryModel categoryModel;
     public void openNewMovieWindow(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getClassLoader().getResource("easv/dk/GUI/View/movieWindow.fxml"));
@@ -143,7 +144,7 @@ public class Controller {
         }
     }
 
-    public void setUpMovieTable() throws SQLException {
+    public void setUpMovieTable() throws SQLException, IOException {
         TableColumn<Movie, String> column1 = new TableColumn<>("Name");
         column1.setCellValueFactory(new PropertyValueFactory<>("title"));
         TableColumn<Movie, String> column2 = new TableColumn<>("IMBD Rating");
@@ -158,7 +159,7 @@ public class Controller {
         movieTable.getColumns().add(column3);
         movieTable.getColumns().add(column4);
 
-//        movieTable.getItems().addAll(movieModel.getAllMovies());
+       movieTable.getItems().addAll(movieModel.getAllMovies1());
 
     }
 
@@ -174,9 +175,9 @@ public class Controller {
         categoryTable.getItems().addAll(categoryModel.getAllCategories());
     }
 
-    public void filter() throws SQLException {
+    public void filter() throws SQLException, IOException {
 
-        dataList.addAll((Movie) MovieModel.getAllMovies()); //<-- depending on what name the method gets
+        dataList.addAll((Movie) movieModel.getAllMovies1()); //<-- depending on what name the method gets
         FilteredList<Movie> filteredData = new FilteredList<>(dataList, b -> true);
 
         searchBar.textProperty().addListener((observable, oldValue, newValue) -> {

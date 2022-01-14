@@ -1,4 +1,4 @@
-package easv.dk.DAL.manager;
+package easv.dk.dal.manager;
 
 import easv.dk.BE.Category;
 import easv.dk.BE.Movie;
@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-public class DALmanager implements IDALManager {
+public class DALmanager implements easv.dk.dal.manager.IDALManager {
     private easv.dk.DAL.CategoryDAO categoryDAO;
     private easv.dk.DAL.MovieDAO movieDAO;
     private easv.dk.DAL.CatMovieDAO catMovieDAO;
@@ -23,7 +23,7 @@ public class DALmanager implements IDALManager {
 
 
 
-    @Override
+
     public List<Movie> getAllMovies() throws SQLException {
 
         return movieDAO.getAllMovies();

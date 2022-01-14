@@ -11,7 +11,7 @@ import java.util.List;
 public class Test {
     public static void main(String[] args) throws Exception {
         // createMovie();
-        //getAllMovie();
+        getAllMovie();
         // updateMovie();
         //deleteMovie();
         //System.out.println("?"+!connection.isClose());

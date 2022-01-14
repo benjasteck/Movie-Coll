@@ -1,4 +1,4 @@
-package easv.dk.BLL;
+package easv.dk.bll;
 
 
 import easv.dk.BE.Category;
@@ -6,7 +6,7 @@ import easv.dk.BE.Movie;
 import easv.dk.DAL.CatMovieDAO;
 import easv.dk.DAL.CategoryDAO;
 import easv.dk.DAL.MovieDAO;
-import easv.dk.DAL.manager.DALmanager;
+import easv.dk.dal.manager.DALmanager;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -14,7 +14,6 @@ import java.util.List;
 
 public class  Manager implements easv.dk.bll.LogicInterface {
 
-   private DALmanager daLmanager;
 
 /*
     public Movie updateMovieRating(){}
@@ -23,16 +22,16 @@ public class  Manager implements easv.dk.bll.LogicInterface {
     public void updateMovieRating(){}
     public void updateMovieDate(){}
     */
-
+  DALmanager daLmanager = new DALmanager();
     public Manager() throws IOException {
-        this.daLmanager = new DALmanager();
+
     }
 
 
 
     @Override
     public List<Movie> getAllMovies() throws SQLException {
-        return daLmanager.getAllMovies();
+        return this.daLmanager.getAllMovies();
 
     }
 
