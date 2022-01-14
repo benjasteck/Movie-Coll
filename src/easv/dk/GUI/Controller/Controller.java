@@ -29,6 +29,8 @@ import java.util.ResourceBundle;
 public class Controller {
 
 
+    public ListView movieInCategory;
+    public Button btnMovieToCat;
     @FXML
     private TextField searchBar;
     private final ObservableList<Movie> dataList = FXCollections.observableArrayList();
@@ -327,9 +329,15 @@ public class Controller {
     }
 
     public void addMovies(ActionEvent actionEvent) {
+
     }
 
     public void newMovie(ActionEvent actionEvent) {
+    }
+
+    public void moveMovieToCategory(ActionEvent actionEvent) {
+        System.out.println(movieTable.getSelectionModel().getSelectedItem());
+        movieInCategory.getItems().add(movieTable.getSelectionModel().getSelectedItem());
     }
     //when button is clicked, the selected movie will be added to the current category
         //System.out.println(movieTable.getSelectionModel().getSelectedItem());
