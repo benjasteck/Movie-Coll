@@ -27,9 +27,6 @@ public class  Manager implements easv.dk.BLL.LogicInterface {
 
     }
 
-
-
-
     public List<Movie> getAllMovies() throws SQLException {
         return this.daLmanager.getAllMovies();
 

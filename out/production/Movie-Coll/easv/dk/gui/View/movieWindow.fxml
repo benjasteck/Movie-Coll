@@ -41,6 +41,6 @@
          </font>
       </Label>
       <TextField layoutX="194.0" layoutY="252.0" />
-      <Button layoutX="364.0" layoutY="252.0" mnemonicParsing="false" text="Choose" />
+      <Button fx:id="btnChooseFile" layoutX="364.0" layoutY="252.0" mnemonicParsing="false" onAction="#chooseFile" text="Choose" />
    </children>
 </AnchorPane>

@@ -24,6 +24,10 @@ public class MovieModel {
         getAllMovies = FXCollections.observableArrayList();
     }
     Manager manager = new Manager();
+
+    public static void deleteMovie(Object selectedItem) {
+    }
+
     public void setGetAllMovies(ObservableList<Movie> getAllMovies) {
         this.getAllMovies = getAllMovies;
     }
