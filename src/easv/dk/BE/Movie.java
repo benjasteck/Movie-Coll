@@ -66,4 +66,9 @@ public class Movie{
         }
 
         public String getCategory() {return Category;}
+
+        @Override
+        public String toString() {
+                return title;
+        }
 }
