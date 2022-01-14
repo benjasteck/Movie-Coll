@@ -43,9 +43,7 @@ public class  Manager implements easv.dk.bll.LogicInterface {
 
     @Override
     public List<Category> getAllCategories() throws SQLException {
-       // List<Category> allCategories = daLmanager.getAllCategories();
-        //return allCategories;
-        return null;
+       return this.daLmanager.getAllCategories();
     }
 
 
