@@ -55,7 +55,7 @@ public class MovieDAO {
         while (rs.next()) {
             String title = rs.getString("title");
             Double userRating = rs.getDouble("userRating");
-            Double IMBDrating = rs.getDouble("IMDBrating");
+            double IMBDrating = rs.getDouble("imdbRating");
             String lastView = rs.getString("lastview");
             String movieUrl = rs.getString("fileLink");
             int Id = rs.getInt("id");

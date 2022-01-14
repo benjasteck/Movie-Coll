@@ -1,4 +1,4 @@
-package easv.dk.bll;
+package easv.dk.BLL;
 
 import easv.dk.BE.Category;
 import easv.dk.BE.Movie;
@@ -24,7 +24,7 @@ public interface LogicInterface {
 
     public List<Category> getCategoriesFromMovies(Category category);
 
-    public List<Movie> getMoviesFromCategories(Movie movie);
+    public List<Movie> getMoviesFromCategories(Category category) throws SQLException;
 
     public void updateMovie(Movie movie) throws SQLException;
 

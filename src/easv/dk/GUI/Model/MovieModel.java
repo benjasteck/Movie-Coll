@@ -1,10 +1,8 @@
 package easv.dk.GUI.Model;
 
-import easv.dk.BE.Category;
 import easv.dk.BE.Movie;
 
 import easv.dk.BLL.Manager;
-import easv.dk.DAL.manager.DALmanager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -14,7 +12,7 @@ import java.util.List;
 
 public class MovieModel {
 
-    private static Manager manager;
+
 
 
 
@@ -22,14 +20,18 @@ public class MovieModel {
 
 
     public MovieModel() throws IOException {
-        this.manager = new Manager();
+
         getAllMovies = FXCollections.observableArrayList();
     }
+    Manager manager = new Manager();
     public void setGetAllMovies(ObservableList<Movie> getAllMovies) {
         this.getAllMovies = getAllMovies;
     }
-    public static List<Movie> getAllMovies() throws SQLException {
-      return manager.getAllMovies();
+    public List<Movie> getAllMovies1() throws SQLException, IOException {
+
+        this.getAllMovies = FXCollections.observableArrayList();
+        this.getAllMovies.addAll(this.manager.getAllMovies());
+        return this.getAllMovies;
     }
 
     public void deleteMovie(Movie selectedItem) {

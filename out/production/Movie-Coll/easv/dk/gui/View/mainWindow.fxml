@@ -12,20 +12,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="578.0" prefWidth="855.0" style="-fx-background-color: #2F0A28;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="easv.dk.GUI.Controller.Controller">
+<AnchorPane prefHeight="578.0" prefWidth="855.0" style="-fx-background-color: #2F0A28;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="easv.dk.GUI.Controller.Controller">
    <children>
       <ListView layoutX="251.0" layoutY="183.0" prefHeight="340.0" prefWidth="200.0" />
       <TableView fx:id="categoryTable" layoutX="29.0" layoutY="183.0" prefHeight="340.0" prefWidth="200.0" />
       <TableView fx:id="movieTable" layoutX="501.0" layoutY="183.0" prefHeight="340.0" prefWidth="341.0" />
-      <Button fx:id="btnEditCategory" layoutX="81.0" layoutY="530.0" mnemonicParsing="false" onAction="#editCategory" text="Edit" />
-      <Button fx:id="btnDeleteMovies" layoutX="608.0" layoutY="531.0" mnemonicParsing="false" onAction="#deleteMovies" text="Delete" />
-      <Button fx:id="btnEditMovies" layoutX="554.0" layoutY="531.0" mnemonicParsing="false" onAction="#editMovies" text="Edit" />
-      <TableView layoutX="29.0" layoutY="183.0" prefHeight="340.0" prefWidth="200.0" />
-      <Button fx:id="btnNewCategory" layoutX="29.0" layoutY="530.0" mnemonicParsing="false" onAction="#openNewCategoryWindow" text="New" />
-      <Button layoutX="81.0" layoutY="530.0" mnemonicParsing="false" text="Edit" />
+      <Button fx:id="btnNewCategory" layoutX="29.0" layoutY="530.0" mnemonicParsing="false" onAction="#newCategory" text="New" />
+      <Button fx:id="btnEditCategory" layoutX="81.0" layoutY="531.0" mnemonicParsing="false" onAction="#editCategory" text="Edit" />
+
       <Button fx:id="btnDeleteCategory" layoutX="129.0" layoutY="530.0" mnemonicParsing="false" onAction="#deleteCategory" text="Delete" />
-      <Button layoutX="251.0" layoutY="530.0" mnemonicParsing="false" text="Delete" />
-      <Button fx:id="btnNewMovie" layoutX="501.0" layoutY="531.0" mnemonicParsing="false" onAction="#openNewMovieWindow" text="New" />
+      <Button fx:id="btnRemoveMovies" layoutX="302.0" layoutY="531.0" mnemonicParsing="false" onAction="#removeMovies" text="Remove" />
+      <Button fx:id="btnAddMovies" layoutX="251.0" layoutY="530.0" mnemonicParsing="false" onAction="#addMovies" text="Add" />
+      <Button fx:id="btnDeleteMovies" layoutX="614.0" layoutY="530.0" mnemonicParsing="false" onAction="#deleteMovies" text="Delete" />
+      <Button fx:id="btnEditMovies" layoutX="564.0" layoutY="530.0" mnemonicParsing="false" onAction="#editMovies" text="Edit" />
+      <Button fx:id="btnNewMovie" layoutX="509.0" layoutY="530.0" mnemonicParsing="false" onAction="#openNewMovieWindow" text="New" />
+      <Button fx:id="btnAddMovies" layoutX="251.0" layoutY="530.0" mnemonicParsing="false" onAction="#addMovies" text="Add" />
       <Label layoutX="29.0" layoutY="151.0" text="Categories" textFill="WHITE">
          <font>
             <Font size="20.0" />
@@ -36,12 +37,12 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="501.0" layoutY="151.0" text="Movies" textFill="WHITE">
+      <Label layoutX="509.0" layoutY="151.0" text="Movies" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="searchBar" layoutX="633.0" layoutY="71.0" prefHeight="25.0" prefWidth="158.0" />
+      <TextField fx:id="searchBar" layoutX="633.0" layoutY="71.0" />
       <Label layoutX="570.0" layoutY="73.0" text="Search" textFill="WHITE">
          <font>
             <Font size="18.0" />
@@ -52,9 +53,9 @@
             <Font name="System Bold" size="17.0" />
          </font>
       </Button>
-      <Button fx:id="btnRateMovie" layoutX="670.0" layoutY="531.0" mnemonicParsing="false" onAction="#openRateMovieWindow" text="Rate movie" />
-      <Button fx:id="btnCloseApplication" layoutX="793.0" layoutY="543.0" mnemonicParsing="false" onAction="#closeApplication" text="Close" />
-      <Button fx:id="btnAddMovie" layoutX="461.0" layoutY="185.0" mnemonicParsing="false" onAction="#addMovieToCategory" rotate="90.0" text="▼">
+      <Button fx:id="btnRateMovie" layoutX="24.0" layoutY="71.0" mnemonicParsing="false" onAction="#openRateMovieWindow" text="Rate movie" />
+      <Button fx:id="btnCloseApplication" layoutX="782.0" layoutY="544.0" mnemonicParsing="false" onAction="#closeApplication" text="Close" />
+      <Button layoutX="460.0" layoutY="184.0" mnemonicParsing="false" rotate="90.0" text="▼">
          <font>
             <Font size="14.0" />
          </font>
@@ -67,23 +68,17 @@
             <Glow level="1.0" />
          </effect>
       </Label>
-      <ComboBox fx:id="sorterBox" layoutX="633.0" layoutY="105.0" prefHeight="26.0" prefWidth="158.0" />
+      <ComboBox fx:id="sorterBox" layoutX="633.0" layoutY="105.0" prefHeight="25.0" prefWidth="149.0" />
       <Label layoutX="570.0" layoutY="104.0" text="Sort by:" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
       <Button fx:id="btnAscendDescend" layoutX="796.0" layoutY="99.0" mnemonicParsing="false" onAction="#getBtnAscendDescend" prefHeight="38.0" prefWidth="40.0" />
-      <ImageView fitHeight="31.0" fitWidth="38.0" layoutX="802.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="31.0" fitWidth="38.0" layoutX="802.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../../Billeder/decasc.png" />
          </image>
       </ImageView>
-      <Button layoutX="29.0" layoutY="65.0" mnemonicParsing="false" prefHeight="68.0" prefWidth="68.0" rotate="90.0" style="-fx-background-radius: 100;" text="▲">
-         <font>
-            <Font name="System Bold" size="25.0" />
-         </font>
-      </Button>
-      <Button layoutX="92.0" layoutY="25.0" mnemonicParsing="false" onAction="#testCatMovie" text="Button" />
    </children>
 </AnchorPane>

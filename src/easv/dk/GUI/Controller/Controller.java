@@ -28,8 +28,7 @@ import java.util.ResourceBundle;
 
 public class Controller {
 
-    private CategoryModel categoryModel;
-    private MovieModel movieModel;
+
     @FXML
     private TextField searchBar;
     private final ObservableList<Movie> dataList = FXCollections.observableArrayList();
@@ -66,6 +65,8 @@ public class Controller {
     private ComboBox sorterBox;
     public int pressed = 0;
 
+
+
     // MediaPlayer mediaPlayer;
     //    int currentMovie = -1;
 
@@ -73,23 +74,24 @@ public class Controller {
     //  Alert alert = new Alert(Alert.AlertType.WARNING, "Remember to delete movies that have a personal rating under 6 and have not been opened in more than 2 years", ButtonType.OK);
     //        alert.showAndWait();
 
-    public Controller() {
+    public Controller() throws IOException {
 
     }
 
 
     @FXML
-    public void initialize() throws SQLException {
+    public void initialize() throws SQLException, IOException {
         sorterBox.getItems().removeAll(sorterBox.getItems());
         sorterBox.getItems().addAll("Title", "IMBD Score", "Category");
 
         setUpMovieTable();
+        setUpCategoryTable();
 
 
 
     }
-
-
+    MovieModel movieModel = new MovieModel();
+    CategoryModel categoryModel = new CategoryModel();
     public void openNewMovieWindow(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getClassLoader().getResource("easv/dk/GUI/View/movieWindow.fxml"));
@@ -143,11 +145,11 @@ public class Controller {
         }
     }
 
-    public void setUpMovieTable() throws SQLException {
+    public void setUpMovieTable() throws SQLException, IOException {
         TableColumn<Movie, String> column1 = new TableColumn<>("Name");
         column1.setCellValueFactory(new PropertyValueFactory<>("title"));
-        TableColumn<Movie, String> column2 = new TableColumn<>("IMBD Rating");
-        column2.setCellValueFactory(new PropertyValueFactory<>("imbdRating"));
+        TableColumn<Movie, String> column2 = new TableColumn<>("IMDB Rating");
+        column2.setCellValueFactory(new PropertyValueFactory<>("imdbRating"));
         TableColumn<Movie, String> column3 = new TableColumn<>("User Rating");
         column3.setCellValueFactory(new PropertyValueFactory<>("userRating"));
         TableColumn<Movie, String> column4 = new TableColumn<>("Last Viewed");
@@ -158,11 +160,11 @@ public class Controller {
         movieTable.getColumns().add(column3);
         movieTable.getColumns().add(column4);
 
-        //movieTable.getItems().addAll(movieModel.getAllMovies());
+       movieTable.getItems().addAll(movieModel.getAllMovies1());
 
     }
 
-    public void setUpCategoryTable() {
+    public void setUpCategoryTable() throws SQLException {
         TableColumn<easv.dk.BE.Category, String> column1 = new TableColumn<>("Name");
         column1.setCellValueFactory(new PropertyValueFactory<>("name"));
         TableColumn<easv.dk.BE.Category, String> column2 = new TableColumn<>("Total Movies");
@@ -171,12 +173,12 @@ public class Controller {
         categoryTable.getColumns().add(column1);
         categoryTable.getColumns().add(column2);
 
-        categoryTable.getItems().addAll(categoryModel.getAllCategories());
+        categoryTable.getItems().addAll(categoryModel.getAllCategories1());
     }
 
-    public void filter() throws SQLException {
+    public void filter() throws SQLException, IOException {
 
-        dataList.addAll((Movie) MovieModel.getAllMovies()); //<-- depending on what name the method gets
+        dataList.addAll((Movie) movieModel.getAllMovies1()); //<-- depending on what name the method gets
         FilteredList<Movie> filteredData = new FilteredList<>(dataList, b -> true);
 
         searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -307,7 +309,7 @@ public class Controller {
 
     public void addMovieToCategory(ActionEvent actionEvent) { }
 
-    public void testCatMovie(ActionEvent actionEvent) {
+    public void testCatMovie(ActionEvent actionEvent) throws SQLException {
         CatMovieDAO catMov = new CatMovieDAO();
         List<CatMovie> list = new ArrayList<>();
 
@@ -318,6 +320,16 @@ public class Controller {
         catMov.createCategoryMovie(list);
 
         catMov.getAllCatMovies();
+    }
+
+
+    public void removeMovies(ActionEvent actionEvent) {
+    }
+
+    public void addMovies(ActionEvent actionEvent) {
+    }
+
+    public void newMovie(ActionEvent actionEvent) {
     }
     //when button is clicked, the selected movie will be added to the current category
         //System.out.println(movieTable.getSelectionModel().getSelectedItem());

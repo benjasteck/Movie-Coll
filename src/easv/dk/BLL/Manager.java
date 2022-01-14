@@ -12,9 +12,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-public class  Manager implements easv.dk.bll.LogicInterface {
+public class  Manager implements easv.dk.BLL.LogicInterface {
 
-   private DALmanager daLmanager;
 
 /*
     public Movie updateMovieRating(){}
@@ -23,16 +22,16 @@ public class  Manager implements easv.dk.bll.LogicInterface {
     public void updateMovieRating(){}
     public void updateMovieDate(){}
     */
-
+  DALmanager daLmanager = new DALmanager();
     public Manager() throws IOException {
-        this.daLmanager = new DALmanager();
+
     }
 
 
 
-    @Override
+
     public List<Movie> getAllMovies() throws SQLException {
-        return daLmanager.getAllMovies();
+        return this.daLmanager.getAllMovies();
 
     }
 
@@ -44,9 +43,7 @@ public class  Manager implements easv.dk.bll.LogicInterface {
 
     @Override
     public List<Category> getAllCategories() throws SQLException {
-       // List<Category> allCategories = daLmanager.getAllCategories();
-        //return allCategories;
-        return null;
+       return this.daLmanager.getAllCategories();
     }
 
 
@@ -58,8 +55,8 @@ public class  Manager implements easv.dk.bll.LogicInterface {
 
 
     @Override
-    public List<Movie> getMoviesFromCategories(Movie movie) {
-        return daLmanager.getMoviesFromCategories(movie);
+    public List<Movie> getMoviesFromCategories(Category category) throws SQLException {
+        return daLmanager.getMoviesFromCategories(category);
     }
 
     @Override
@@ -83,18 +80,18 @@ public class  Manager implements easv.dk.bll.LogicInterface {
         //categoryDAO.updateCategory(category);
     }
 
-    public static void deleteCategory(Object selectedItem) throws SQLException{
-        DALmanager.deleteCategory(selectedItem);
+    public  void deleteCategory(Category selectedItem) throws SQLException{
+        //DALmanager.deleteCategory(selectedItem);
 
     }
     public void deleteMovie(Movie movie) throws SQLException {
         daLmanager.deleteMovie(movie);
     }
 
-    @Override
+    /*@Override
     public void deleteCategory(Category category) throws SQLException {
 
-    }
+    }*/
 
     public void addMovieToCategory(){
 
