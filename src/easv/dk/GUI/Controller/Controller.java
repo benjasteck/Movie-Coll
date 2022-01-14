@@ -322,8 +322,6 @@ public class Controller {
         catMov.getAllCatMovies();
     }
 
-    public void newCategory(ActionEvent actionEvent) {
-    }
 
     public void removeMovies(ActionEvent actionEvent) {
     }
