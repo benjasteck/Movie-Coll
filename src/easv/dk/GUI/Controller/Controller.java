@@ -85,12 +85,13 @@ public class Controller {
         sorterBox.getItems().addAll("Title", "IMBD Score", "Category");
 
         setUpMovieTable();
+        //setUpCategoryTable();
 
 
 
     }
     MovieModel movieModel = new MovieModel();
-    private CategoryModel categoryModel;
+    CategoryModel categoryModel = new CategoryModel();
     public void openNewMovieWindow(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getClassLoader().getResource("easv/dk/GUI/View/movieWindow.fxml"));
@@ -163,7 +164,7 @@ public class Controller {
 
     }
 
-    public void setUpCategoryTable() {
+    public void setUpCategoryTable() throws SQLException {
         TableColumn<easv.dk.BE.Category, String> column1 = new TableColumn<>("Name");
         column1.setCellValueFactory(new PropertyValueFactory<>("name"));
         TableColumn<easv.dk.BE.Category, String> column2 = new TableColumn<>("Total Movies");
@@ -172,7 +173,7 @@ public class Controller {
         categoryTable.getColumns().add(column1);
         categoryTable.getColumns().add(column2);
 
-        categoryTable.getItems().addAll(categoryModel.getAllCategories());
+        categoryTable.getItems().addAll(categoryModel.getAllCategories1());
     }
 
     public void filter() throws SQLException, IOException {
