@@ -1,4 +1,4 @@
-package easv.dk.bll;
+package easv.dk.BLL;
 
 import easv.dk.BE.Category;
 import easv.dk.BE.Movie;
