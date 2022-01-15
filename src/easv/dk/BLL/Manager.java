@@ -9,6 +9,7 @@ import easv.dk.DAL.MovieDAO;
 import easv.dk.DAL.manager.DALmanager;
 
 import java.io.IOException;
+import java.lang.management.MonitorInfo;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -57,9 +58,8 @@ public class  Manager implements easv.dk.BLL.LogicInterface {
     }
 
     @Override
-    public List<Category> getCategoriesFromMovies(Category category) {
-   //     return daLmanager.getCategoriesFromMovies(category);
-        return null;
+    public List<Category> getCategoriesFromMovie(Movie movie) throws SQLException {
+        return daLmanager.getCategoriesFromMovies(movie);
     }
 
     @Override
