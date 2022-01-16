@@ -349,7 +349,7 @@ public class Controller {
     }
 
     public void addMovies(ActionEvent actionEvent) {
-
+        System.out.println("test");
     }
 
     public void newMovie(ActionEvent actionEvent) {
@@ -394,6 +394,22 @@ public class Controller {
     public void moveMovieToCategory(ActionEvent actionEvent) {
         System.out.println(movieTable.getSelectionModel().getSelectedItem());
         movieInCategory.getItems().add(movieTable.getSelectionModel().getSelectedItem());
+    }
+
+    public void addCatMovies(ActionEvent actionEvent) {
+        Parent root;
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            root=loader.load(getClass().getClassLoader().getResource("easv/dk/GUI/View/categorySelectForMovie.fxml"));
+            CategorySelectForMovieController controller=loader.getController();
+            controller.setMovie((Movie) movieTable.getSelectionModel().getSelectedItem());
+            Stage stage=new Stage();
+            stage.setTitle("Select Category for this movie");
+            stage.setScene(new Scene(root,450,450));
+           stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     //when button is clicked, the selected movie will be added to the current category
     //System.out.println(movieTable.getSelectionModel().getSelectedItem());

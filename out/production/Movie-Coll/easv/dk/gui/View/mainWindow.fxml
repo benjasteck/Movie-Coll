@@ -22,11 +22,11 @@
 
       <Button fx:id="btnDeleteCategory" layoutX="129.0" layoutY="530.0" mnemonicParsing="false" onAction="#deleteCategory" text="Delete" />
       <Button fx:id="btnRemoveMovies" layoutX="302.0" layoutY="531.0" mnemonicParsing="false" onAction="#removeMovies" text="Remove" />
-      <Button fx:id="btnAddMovies" layoutX="251.0" layoutY="530.0" mnemonicParsing="false" onAction="#addMovies" text="Add" />
+      <Button fx:id="btnAddMovies" layoutX="251.0" layoutY="530.0" mnemonicParsing="false"  text="Add" onAction="#addMovies" />
       <Button fx:id="btnDeleteMovies" layoutX="614.0" layoutY="530.0" mnemonicParsing="false" onAction="#deleteMovies" text="Delete" />
       <Button fx:id="btnEditMovies" layoutX="564.0" layoutY="530.0" mnemonicParsing="false" onAction="#editMovies" text="Edit" />
       <Button fx:id="btnNewMovie" layoutX="509.0" layoutY="530.0" mnemonicParsing="false" onAction="#openNewMovieWindow" text="New" />
-      <Button fx:id="btnAddCatMovies" layoutX="251.0" layoutY="530.0" mnemonicParsing="false" onAction="#addMovies" text="Add" />
+      <Button fx:id="btnAddCatMovies" layoutX="251.0" layoutY="530.0" mnemonicParsing="false" onAction="#addCatMovies" text="Add" />
       <Label layoutX="29.0" layoutY="151.0" text="Categories" textFill="WHITE">
          <font>
             <Font size="20.0" />
