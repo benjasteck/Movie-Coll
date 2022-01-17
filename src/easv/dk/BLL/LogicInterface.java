@@ -22,7 +22,7 @@ public interface LogicInterface {
 
     public void deleteCategory(Category category) throws SQLException;
 
-    public List<Category> getCategoriesFromMovie(Movie movie) throws SQLException;
+    public List<Category> getCategoriesFromMovies(Category category);
 
     public List<Movie> getMoviesFromCategories(Category category) throws SQLException;
 
