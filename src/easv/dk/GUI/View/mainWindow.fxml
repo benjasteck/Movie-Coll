@@ -22,7 +22,7 @@
 
       <Button fx:id="btnDeleteCategory" layoutX="129.0" layoutY="530.0" mnemonicParsing="false" onAction="#deleteCategory" text="Delete" />
       <Button fx:id="btnRemoveMovies" layoutX="302.0" layoutY="531.0" mnemonicParsing="false" onAction="#removeMovies" text="Remove" />
-      <Button fx:id="btnAddMovies" layoutX="251.0" layoutY="530.0" mnemonicParsing="false"  text="Add" onAction="#addMovies" />
+      <Button fx:id="btnAddMovies" layoutX="251.0" layoutY="530.0" mnemonicParsing="false" onAction="#addMovies" text="Add" />
       <Button fx:id="btnDeleteMovies" layoutX="614.0" layoutY="530.0" mnemonicParsing="false" onAction="#deleteMovies" text="Delete" />
       <Button fx:id="btnEditMovies" layoutX="564.0" layoutY="530.0" mnemonicParsing="false" onAction="#editMovies" text="Edit" />
       <Button fx:id="btnNewMovie" layoutX="509.0" layoutY="530.0" mnemonicParsing="false" onAction="#openNewMovieWindow" text="New" />
@@ -55,7 +55,7 @@
       </Button>
       <Button fx:id="btnRateMovie" layoutX="677.0" layoutY="531.0" mnemonicParsing="false" onAction="#openRateMovieWindow" text="Rate movie" />
       <Button fx:id="btnCloseApplication" layoutX="797.0" layoutY="528.0" mnemonicParsing="false" onAction="#closeApplication" text="Close" />
-      <Button fx:id="btnMovieToCat" layoutX="460.0" layoutY="184.0" mnemonicParsing="false" onAction="#moveMovieToCategory" rotate="90.0" text="▼" visible="false">
+      <Button fx:id="btnMovieToCat" layoutX="460.0" layoutY="184.0" mnemonicParsing="false" onAction="#moveMovieToCategory" rotate="90.0" text="▼">
          <font>
             <Font size="14.0" />
          </font>
