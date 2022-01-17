@@ -8,9 +8,6 @@ import easv.dk.BLL.Manager;
 import easv.dk.DAL.CatMovieDAO;
 import easv.dk.GUI.Model.CategoryModel;
 import easv.dk.GUI.Model.MovieModel;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -23,14 +20,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import javafx.scene.*;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 
 public class Controller {
 
@@ -74,10 +68,10 @@ public class Controller {
     @FXML
     private ComboBox sorterBox;
     public int pressed = 0;
-//private IntegerProperty modProperty;
-    private final static int MovieSelected=0;   //constant
-    private final static int CategorySelected=1;        //constant
-    private int mode=MovieSelected;
+    //private IntegerProperty modProperty;
+    private final static int MovieSelected = 0;   //constant
+    private final static int CategorySelected = 1;        //constant
+    private int mode = MovieSelected;
 
     // MediaPlayer mediaPlayer;
     //    int currentMovie = -1;
@@ -173,14 +167,14 @@ public class Controller {
         column4.setCellValueFactory(new PropertyValueFactory<>("lastView"));
         TableColumn<Movie, String> columnId = new TableColumn<>("Id");
         columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
-
+        categoryTable.getColumns().clear();
         movieTable.getColumns().add(columnId);
         movieTable.getColumns().add(column1);
         movieTable.getColumns().add(column5);
         movieTable.getColumns().add(column2);
         movieTable.getColumns().add(column3);
         movieTable.getColumns().add(column4);
-
+        movieTable.getItems().clear();
         movieTable.getItems().addAll(movieModel.getAllMovies1());
 
     }
@@ -190,10 +184,10 @@ public class Controller {
         column1.setCellValueFactory(new PropertyValueFactory<>("name"));
         TableColumn<easv.dk.BE.Category, String> column2 = new TableColumn<>("Total Movies");
         column2.setCellValueFactory(new PropertyValueFactory<>("movieCount"));
-
+        categoryTable.getColumns().clear();
         categoryTable.getColumns().add(column1);
         categoryTable.getColumns().add(column2);
-
+        categoryTable.getItems().clear();
         categoryTable.getItems().addAll(categoryModel.getAllCategories1());
     }
 
@@ -346,6 +340,28 @@ public class Controller {
 
 
     public void removeMovies(ActionEvent actionEvent) {
+        Movie selectedMovie;
+        Category selectedCategory;
+        if (mode == MovieSelected) {
+            selectedMovie = (Movie) movieTable.getSelectionModel().getSelectedItem();
+            selectedCategory = (Category) movieInCategory.getSelectionModel().getSelectedItem();
+        } else {
+            selectedMovie = (Movie) movieInCategory.getSelectionModel().getSelectedItem();
+            selectedCategory = (Category) categoryTable.getSelectionModel().getSelectedItem();
+        }
+        removeMovieFromCategory(selectedMovie, selectedCategory);
+        movieInCategory.getItems().clear();
+    }
+
+    private void removeMovieFromCategory(Movie selectedMovie, Category selectedCategory) {
+        if (selectedMovie == null || selectedCategory == null) return;
+        try {
+            LogicInterface bll = new Manager();
+            bll.removeMovieFromCategory(selectedMovie.getId(), selectedCategory.getId());
+            initialize();
+        } catch (IOException | SQLException exception) {
+            exception.printStackTrace();
+        }
     }
 
     public void addMovies(ActionEvent actionEvent) {
@@ -354,10 +370,11 @@ public class Controller {
 
     public void newMovie(ActionEvent actionEvent) {
     }
-//to show category in lisht for each movie
+
+    //to show category in lisht for each movie
     public void showMovieCategoriesInList() {
         clearListView();
-        mode=MovieSelected;
+        mode = MovieSelected;
         Movie selectedMovie = (Movie) movieTable.getSelectionModel().getSelectedItem();  //get selected movie in movie table
         try {
             LogicInterface bll = new Manager();  //get bll interface to use data from database
@@ -378,8 +395,8 @@ public class Controller {
 
     public void showCategoryMoviesInList() {
         clearListView();
-        mode=CategorySelected;
-        Category selectedCategory = (Category)categoryTable.getSelectionModel().getSelectedItem();  //get selected category in category table
+        mode = CategorySelected;
+        Category selectedCategory = (Category) categoryTable.getSelectionModel().getSelectedItem();  //get selected category in category table
         try {
             LogicInterface bll = new Manager();  //get bll interface to use data from database
             List<Movie> movies = bll.getMoviesFromCategories(selectedCategory);      //load movies for selected category
@@ -397,16 +414,49 @@ public class Controller {
     }
 
     public void addCatMovies(ActionEvent actionEvent) {
+        final Movie selectedMovie = (Movie) movieTable.getSelectionModel().getSelectedItem();
+        final Category selectedCategory = (Category) categoryTable.getSelectionModel().getSelectedItem();
+        if (selectedMovie == null && selectedCategory == null) {
+            new Alert(Alert.AlertType.ERROR, "Please select a Movie").show();
+            return;
+        }
+        if (mode == MovieSelected)
+            showCategorySelectForMovie(selectedMovie);
+        else
+            showMovieSelectForCategory(selectedCategory);
+    }
+
+    private void showMovieSelectForCategory(Category selectedCategory) {
         Parent root;
         try {
-            FXMLLoader loader = new FXMLLoader();
-            root=loader.load(getClass().getClassLoader().getResource("easv/dk/GUI/View/categorySelectForMovie.fxml"));
-            CategorySelectForMovieController controller=loader.getController();
-            controller.setMovie((Movie) movieTable.getSelectionModel().getSelectedItem());
-            Stage stage=new Stage();
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("easv/dk/GUI/View/movieSelectforCategory.fxml"));
+            root = loader.load();
+            MovieSelectForCategory controller = loader.getController();
+
+            Stage stage = new Stage();
+            stage.setTitle("Select Movie for this Category");
+            stage.setScene(new Scene(root, 450, 450));
+            stage.show();
+            controller.setCategory(selectedCategory);
+            controller.setParentController(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showCategorySelectForMovie(Movie selectedItem) {
+        Parent root;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("easv/dk/GUI/View/categorySelectForMovie.fxml"));
+            root = loader.load();
+            CategorySelectForMovieController controller = loader.getController();
+
+            Stage stage = new Stage();
             stage.setTitle("Select Category for this movie");
-            stage.setScene(new Scene(root,450,450));
-           stage.show();
+            stage.setScene(new Scene(root, 450, 450));
+            stage.show();
+            controller.setMovie(selectedItem);
+            controller.setParentController(this);
         } catch (IOException e) {
             e.printStackTrace();
         }

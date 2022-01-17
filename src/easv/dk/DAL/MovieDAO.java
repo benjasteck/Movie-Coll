@@ -49,7 +49,7 @@ public class MovieDAO {
         List<Movie> movieList = new ArrayList<>();
         Connection con = cm.getConnection();
         String sqlSelectMovie = "\n" +
-                "select movie.id,title,userRating,IMDBRating,fileLink,lastview,CAST(count (category_id) as nvarchar(20)) as categories from movie\n" +
+                "select movie.id,title,userRating,IMDBRating,fileLink,lastview,CAST(count(category_id) as varchar(20)) as categories from movie\n" +
                 "left join catMovie on movie.id=catMovie.movie_id\n" +
                 "left join category on category.id=catMovie.category_id\n" +
                 "GROUP by movie.id,title,userRating,IMDBRating,fileLink,lastview\n;";

@@ -60,7 +60,7 @@ public class CatMovieDAO {
 
 
     public CatMovie createCatMovie(CatMovie catMovie) throws SQLException {
-        CatMovie catMovie1 = null;
+        CatMovie catMovie1 = new CatMovie(catMovie.getCategoryID(),catMovie.getMovieID());
         Connection con = cm.getConnection();
         String query = "insert into catmovie (movie_id,category_id) values(?,?);";
         PreparedStatement preparedStatement = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);  //to return generated catMovie_id in result
@@ -160,7 +160,7 @@ public class CatMovieDAO {
     }
     public void removeCategoryFromMovie(Category category, Movie movie) throws SQLException {
         Connection con = cm.getConnection();
-        PreparedStatement preparedStatement = con.prepareStatement("delete from catmovie where category_id=? and movie_id=?");  //delete row from catmovie table according to category and movie
+        PreparedStatement preparedStatement = con.prepareStatement("delete from catMovie where category_id=? and movie_id=?");  //delete row from catmovie table according to category and movie
         preparedStatement.setInt(1,category.getId());
         preparedStatement.setInt(2,movie.getId());
         preparedStatement.executeUpdate();
