@@ -1,5 +1,7 @@
 package easv.dk.BE;
 
+import java.util.Date;
+
 public class Movie{
         private String title;
         private double userRating;
@@ -7,7 +9,7 @@ public class Movie{
         private String movieUrl;
         private String lastView;
         private int Id;
-        private String category;
+        private String Category;
 
         public Movie(String title, double userRating, double imdbRating, String lastView, String movieUrl, int Id) {
                 this.title = title;
@@ -63,14 +65,10 @@ public class Movie{
                 this.lastView = lastView;
         }
 
-        public String getCategory() {return category;}
+        public String getCategory() {return Category;}
 
         @Override
         public String toString() {
                 return title;
-        }
-
-        public void setCategory(String category) {
-                this.category = category;
         }
 }

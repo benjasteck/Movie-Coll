@@ -48,11 +48,7 @@ public class MovieDAO {
     public List<Movie> getAllMovies() throws SQLException {
         List<Movie> movieList = new ArrayList<>();
         Connection con = cm.getConnection();
-        String sqlSelectMovie = "\n" +
-                "select movie.id,title,userRating,IMDBRating,fileLink,lastview,CAST(count (category_id) as nvarchar(20)) as categories from movie\n" +
-                "left join catMovie on movie.id=catMovie.movie_id\n" +
-                "left join category on category.id=catMovie.category_id\n" +
-                "GROUP by movie.id,title,userRating,IMDBRating,fileLink,lastview\n;";
+        String sqlSelectMovie = "SELECT * FROM Movie;";
         PreparedStatement pstStatementSelectMovie = con.prepareStatement(sqlSelectMovie);
         ResultSet rs = pstStatementSelectMovie.executeQuery();
 
@@ -64,7 +60,6 @@ public class MovieDAO {
             String movieUrl = rs.getString("fileLink");
             int Id = rs.getInt("id");
             Movie movie = new Movie(title, userRating, IMBDrating, lastView, movieUrl, Id);
-            movie.setCategory(rs.getString("categories"));
             movieList.add(movie);
         }
         rs.close();
