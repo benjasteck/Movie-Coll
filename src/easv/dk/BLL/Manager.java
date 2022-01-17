@@ -13,18 +13,17 @@ import java.lang.management.MonitorInfo;
 import java.sql.SQLException;
 import java.util.List;
 
-public class Manager implements easv.dk.BLL.LogicInterface {
+public class  Manager implements easv.dk.BLL.LogicInterface {
 
 
-    /*
-        public Movie updateMovieRating(){}
-        public Movie updateMovieDate(){}
-        public void searchMovie (){}
-        public void updateMovieRating(){}
-        public void updateMovieDate(){}
-        */
-    DALmanager daLmanager = new DALmanager();
-
+/*
+    public Movie updateMovieRating(){}
+    public Movie updateMovieDate(){}
+    public void searchMovie (){}
+    public void updateMovieRating(){}
+    public void updateMovieDate(){}
+    */
+  DALmanager daLmanager = new DALmanager();
     public Manager() throws IOException {
 
     }
@@ -36,14 +35,15 @@ public class Manager implements easv.dk.BLL.LogicInterface {
 
     @Override
     public Movie createMovie(Movie movie) throws Exception {
-        // return daLmanager.createMovie(movie);
+       // return daLmanager.createMovie(movie);
         return null;
     }
 
     @Override
     public List<Category> getAllCategories() throws SQLException {
-        return this.daLmanager.getAllCategories();
+       return this.daLmanager.getAllCategories();
     }
+
 
 
     public Category createCategory(Category category) throws Exception {
@@ -77,11 +77,10 @@ public class Manager implements easv.dk.BLL.LogicInterface {
         //categoryDAO.updateCategory(category);
     }
 
-    public void deleteCategory(Category selectedItem) throws SQLException {
+    public  void deleteCategory(Category selectedItem) throws SQLException{
         //DALmanager.deleteCategory(selectedItem);
 
     }
-
     public void deleteMovie(Movie movie) throws SQLException {
         daLmanager.deleteMovie(movie);
     }
@@ -91,12 +90,12 @@ public class Manager implements easv.dk.BLL.LogicInterface {
 
     }*/
 
-    public void addMovieToCategory(int movieId, int categoryId) throws SQLException {
-        daLmanager.addMovieToCategory(new Category(categoryId, ""), new Movie("", 0, 0, "", "", movieId));
+    public void addMovieToCategory(){
+
     }
 
-    public void removeMovieFromCategory(int movieId, int categoryId) throws SQLException {
-        daLmanager.removeMovieFromCategory(new Category(categoryId, ""), new Movie("", 0, 0, "", "", movieId));
+    public void removeMovieFromCategory(){
+
     }
 
 }
