@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane fx:controller="easv.dk.GUI.Controller.CategorySelectForMovieController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:contoller="" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="201.0" layoutY="115.0" text="Movie Id:" />
       <Label fx:id="movieIdLabel" layoutX="257.0" layoutY="115.0" />
@@ -15,6 +15,6 @@
       <Label layoutX="201.0" layoutY="183.0" text="Category" />
       <ComboBox fx:id="categoryCombo" layoutX="278.0" layoutY="179.0" prefWidth="150.0" />
       <Button fx:id="CategorySelectFormMovieOkButton" layoutX="199.0" layoutY="278.0" mnemonicParsing="false" text="OK" />
-      <Button fx:id="categorySelectForMovieCancelButton" layoutX="274.0" layoutY="278.0" mnemonicParsing="false" text="Cacel" />
+      <Button fx:id="categorySelectForMovieCnacelButton" layoutX="274.0" layoutY="278.0" mnemonicParsing="false" text="Cacel" />
    </children>
 </AnchorPane>
