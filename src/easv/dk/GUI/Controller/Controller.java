@@ -226,9 +226,9 @@ public class Controller {
 
     public void sort() {
         //constructors of the columns needed
-        TableColumn movCol1 = (TableColumn) movieTable.getColumns().get(1);
-        TableColumn movCol2 = (TableColumn) movieTable.getColumns().get(2);
-        TableColumn catCol1 = (TableColumn) categoryTable.getColumns().get(1);
+        TableColumn movCol1 = (TableColumn) movieTable.getColumns().get(0);
+        TableColumn movCol2 = (TableColumn) movieTable.getColumns().get(1);
+        TableColumn catCol1 = (TableColumn) categoryTable.getColumns().get(0);
 
         //checks for selected colum
         if (sorterBox.getValue() == ("Title")) {
