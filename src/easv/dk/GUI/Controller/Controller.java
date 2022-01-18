@@ -25,6 +25,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class Controller {
 
@@ -88,6 +89,7 @@ public class Controller {
 
         setUpMovieTable();
         setUpCategoryTable();
+        filter();
 
 
 
@@ -180,11 +182,11 @@ public class Controller {
 
     public void filter() throws SQLException, IOException {
 
-        dataList.addAll((Movie) movieModel.getAllMovies1()); //<-- depending on what name the method gets
+        dataList.addAll(movieModel.getAllMovies1()); //<-- depending on what name the method gets
         FilteredList<Movie> filteredData = new FilteredList<>(dataList, b -> true);
 
         searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(movie1 -> {
+            filteredData.setPredicate(movie -> {
                 // If filter text is empty, display all song.
 
                 if (newValue == null || newValue.isEmpty()) {
@@ -194,19 +196,21 @@ public class Controller {
                 // Compare title, category and rating of every song with filter text.
                 String lowerCaseFilter = newValue.toLowerCase();
 
-                if (movie1.getTitle().toLowerCase().contains(lowerCaseFilter)) {
+                if (movie.getTitle().toLowerCase().contains(lowerCaseFilter) )
                     return true; // Filter title.
-                }
-                if (String.valueOf(movie1.getImdbRating()).contains(lowerCaseFilter)) {
-                    for (Double n = movie1.getImdbRating(); n <= 10; n++) {
-                        return true; //filter minimum imdbRating
-                    }
-                }
-                if (movie1.getCategory().toLowerCase().contains(lowerCaseFilter)) {
-                    return true; // Filter category.
-                } else return false;
-                // if nothing found return false
 
+                else if (String.valueOf(movie.getImdbRating()).contains(lowerCaseFilter)) {
+                    //List<Integer> result = (List<Integer>) filteredData.stream().filter(val -> val.intValue() > searchBar.textProperty()).collect(Collectors.toList());
+
+                        return true;
+                }
+                else
+                    return false;
+                /*if (movie.getCategory().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;}*/ // Filter category.
+
+                // if nothing found return false
+                
             });
         });
 
