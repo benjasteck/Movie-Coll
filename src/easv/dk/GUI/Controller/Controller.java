@@ -35,6 +35,7 @@ public class Controller {
     @FXML
     private TextField searchBar;
     private final ObservableList<Movie> dataList = FXCollections.observableArrayList();
+    private final ObservableList<Category> dataList2 = FXCollections.observableArrayList();
 
     @FXML
     private TableView categoryTable;
@@ -90,6 +91,7 @@ public class Controller {
         setUpMovieTable();
         setUpCategoryTable();
         filter();
+        filterCat();
 
 
 
@@ -218,6 +220,42 @@ public class Controller {
         sortedData.comparatorProperty().bind(movieTable.comparatorProperty());
         //show the new list of filtered songs
         movieTable.setItems(sortedData);
+
+        //there needs to be a reference in an initialize method for this to work
+
+
+    }
+
+    public void filterCat() throws SQLException, IOException {
+
+        dataList2.addAll(categoryModel.getAllCategories1()); //<-- depending on what name the method gets
+        FilteredList<Category> filteredData = new FilteredList<>(dataList2, b -> true);
+
+        searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(category -> {
+                // If filter text is empty, display all song.
+
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                // Compare title, category and rating of every song with filter text.
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (category.getName().toLowerCase().contains(lowerCaseFilter) )
+                    return true; // Filter title.
+
+
+                else
+                    return false;
+
+            });
+        });
+
+        SortedList<Category> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(categoryTable.comparatorProperty());
+        //show the new list of filtered songs
+        categoryTable.setItems(sortedData);
 
         //there needs to be a reference in an initialize method for this to work
 
